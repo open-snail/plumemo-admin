@@ -16,7 +16,7 @@
                 <el-avatar :src="item.avatar" />
               </el-col>
               <el-col :xs="18" :sm="18" :md="18" :lg="18" :xl="16">
-                <a :href="'https://www.whatyun.cn/article/'+item.id"> <span style="display: inline;font-weight: 500;font-size: 18px; line-height: 28px; color: #212121; position: relative; vertical-align: middle;">{{ item.title }}</span></a>
+                <a :href="'https://www.byteblogs.com/article/'+item.id"> <span style="display: inline;font-weight: 500;font-size: 18px; line-height: 28px; color: #212121; position: relative; vertical-align: middle;">{{ item.title }}</span></a>
               </el-col>
               <el-col :xs="6" :sm="6" :md="6" :lg="6" :xl="5">
                 <span style="font-size: 16px;padding-left: 6px"> {{ item.views }} 浏览 ⋅ {{ item.comments }} 回复</span>

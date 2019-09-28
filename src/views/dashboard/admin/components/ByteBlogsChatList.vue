@@ -21,7 +21,7 @@
                 <span>{{ parseTime(item.createTime,"{y}-{m}-{d} {h}:{i}:{s}") }}</span>
               </div>
               <div class="list-item-middle">
-                <a :href="`https://www.whatyun.cn/chat/`+item.id"><span style="color: #2e3135;" class="suspension">{{ item.title }}</span></a>
+                <a :href="`https://www.byteblogs.com/chat/`+item.id"><span style="color: #2e3135;" class="suspension">{{ item.title }}</span></a>
               </div>
               <div class="list-item-bottom">
                 <span><svg-icon icon-class="zan" style="width: 16px;height: 16px" />  {{ item.favors }}</span>
