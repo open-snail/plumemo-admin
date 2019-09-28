@@ -75,7 +75,7 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        size: 20
+        size: 10
       },
       textMap: {
         update: '更新标签',
@@ -100,8 +100,13 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchTagsList().then(response => {
+      fetchTagsList({
+        page: this.listQuery.page,
+        size: 10
+      }).then(response => {
         this.tagsList = response.models
+        this.listQuery = response.pageInfo
+        this.total = response.pageInfo.total
         this.listLoading = false
       })
     },
