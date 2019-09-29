@@ -11,7 +11,7 @@
             <el-radio-group v-model="postForm.platformType" size="mini">
               <el-radio label="1" border size="medium">掘金</el-radio>
               <el-radio label="2" border size="medium">简书</el-radio>
-              <el-radio label="3" border size="medium">CSDN</el-radio>
+<!--              <el-radio label="3" border size="medium">CSDN</el-radio>-->
               <el-radio label="4" border size="medium">思否</el-radio>
               <el-radio label="5" border size="medium">博客园</el-radio>
             </el-radio-group>

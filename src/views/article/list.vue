@@ -78,9 +78,11 @@
           <el-button v-if="row.syncStatus === 0" size="mini" type="success" @click="handleSync(row)">
             同步
           </el-button>
-          <el-button v-if="row.syncStatus === 1" size="mini">
-            已同步
-          </el-button>
+          <el-tooltip class="item" effect="dark" content="点击去ByteBlogs发布文章" placement="top-start">
+            <el-button v-if="row.syncStatus === 1" size="mini" @click="goByteBlogsEdit">
+              已同步
+            </el-button>
+          </el-tooltip>
           <el-button size="mini" type="danger" @click="handleDelete(row,'deleted')">
             {{ $t('table.delete') }}
           </el-button>
@@ -155,7 +157,7 @@ export default {
         const { success } = res
         if (success === 1) {
           this.$message({
-            message: '同步成功',
+            message: '同步成功已存入ByteBlogs草稿箱,您可以去ByteBlogs进行发布',
             type: 'success'
           })
           this.getList()
@@ -170,6 +172,9 @@ export default {
         })
         this.getList()
       })
+    },
+    goByteBlogsEdit() {
+      window.open('https://www.byteblogs.com/editor/posts', '_blank')
     }
   }
 }
