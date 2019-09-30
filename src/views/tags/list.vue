@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <div class="filter-container">
-      <el-input v-model="listQuery.title" :placeholder="$t('table.title')" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
+      <el-input v-model="listQuery.keywords" :placeholder="$t('table.title')" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
       <el-button v-waves class="filter-item" type="primary" icon="el-icon-search" @click="handleFilter">
         {{ $t('table.search') }}
       </el-button>
@@ -75,7 +75,8 @@ export default {
       listLoading: true,
       listQuery: {
         page: 1,
-        size: 10
+        size: 10,
+        keywords: ''
       },
       textMap: {
         update: '更新标签',
@@ -100,10 +101,7 @@ export default {
   methods: {
     getList() {
       this.listLoading = true
-      fetchTagsList({
-        page: this.listQuery.page,
-        size: 10
-      }).then(response => {
+      fetchTagsList(this.listQuery).then(response => {
         this.tagsList = response.models
         this.listQuery = response.pageInfo
         this.total = response.pageInfo.total

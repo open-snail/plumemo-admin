@@ -69,10 +69,10 @@
               {{ $t('table.edit') }}
             </el-button>
           </router-link>
-          <el-button v-if="row.status === 1" size="mini" type="success" @click="handleModifyStatus(row,1)">
+          <el-button v-if="row.status === 1" size="mini" type="success" @click="handleModifyStatus(row,2)">
             {{ $t('table.publish') }}
           </el-button>
-          <el-button v-if="row.status === 2" size="mini" @click="handleModifyStatus(row,2)">
+          <el-button v-if="row.status === 2" size="mini" @click="handleModifyStatus(row,1)">
             {{ $t('table.draft') }}
           </el-button>
           <el-button v-if="row.syncStatus === 0" size="mini" type="success" @click="handleSync(row)">
