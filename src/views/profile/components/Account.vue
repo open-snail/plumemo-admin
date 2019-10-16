@@ -6,6 +6,21 @@
     <el-form-item label="邮箱">
       <el-input v-model.trim="user.email" />
     </el-form-item>
+    <el-form-item label="QQ">
+      <el-input v-model.trim="user.qq" />
+    </el-form-item>
+    <el-form-item label="csdn">
+      <el-input v-model.trim="user.csdn" />
+    </el-form-item>
+    <el-form-item label="weibo">
+      <el-input v-model.trim="user.weibo" />
+    </el-form-item>
+    <el-form-item label="twitter">
+      <el-input v-model.trim="user.twitter" />
+    </el-form-item>
+    <el-form-item label="facebook">
+      <el-input v-model.trim="user.facebook" />
+    </el-form-item>
     <el-form-item label="个人简介">
       <el-input v-model.trim="user.introduction" />
     </el-form-item>
@@ -25,6 +40,11 @@ export default {
         return {
           name: '',
           email: '',
+          qq: '',
+          csdn: '',
+          weibo: '',
+          witter: '',
+          facebook: '',
           introduction: ''
         }
       }
