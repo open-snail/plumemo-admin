@@ -52,7 +52,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column min-width="300px" label="标题">
+      <el-table-column min-width="300px" label="标签">
         <template slot-scope="{ row }">
           <span
             v-for="tag in row.tagsList"
