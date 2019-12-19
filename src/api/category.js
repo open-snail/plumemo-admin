@@ -1,5 +1,13 @@
 import request from '@/utils/request'
 
+export function fetchCategoryLists(query) {
+  return request({
+    url: '/category/category/v1/list',
+    method: 'get',
+    params: query
+  })
+}
+
 export function fetchCategoryList(query) {
   return request({
     url: '/category/category-tags/v1/list',
