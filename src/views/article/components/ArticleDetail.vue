@@ -47,6 +47,10 @@
           </el-select>
         </el-form-item>
 
+        <el-form-item style="margin-bottom: 40px;" label-width="70px" label="权重:">
+            <el-input v-model="postForm.weight" style="width: 140px"></el-input>
+        </el-form-item>
+
         <el-form-item style="margin-bottom: 40px;" label-width="70px" label="标签:">
           <el-tag
             v-for="(tag, index ) in dynamicTags"
@@ -289,7 +293,8 @@ export default {
               isComment: this.postForm.isComment,
               categoryId: this.postForm.categoryId, // 文章分类
               isPublishByteBlogs: this.postForm.isPublishByteBlogs,
-              tagsList: this.dynamicTags
+              tagsList: this.dynamicTags,
+              weight: this.postForm.weight
             }).then(response => {
               this.postForm.status = 2
               this.$router.push('/article/list') // 跳转到文章列表页
@@ -307,7 +312,8 @@ export default {
               isComment: this.postForm.isComment,
               categoryId:this.postForm.categoryId, // 文章分类
               isPublishByteBlogs: this.postForm.isPublishByteBlogs,
-              tagsList: this.dynamicTags
+              tagsList: this.dynamicTags,
+              weight: this.postForm.weight
             }).then(response => {
               this.postForm.status = 2
 
