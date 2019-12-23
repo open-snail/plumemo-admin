@@ -39,6 +39,14 @@
           />
         </el-form-item>
 
+
+
+        <el-form-item style="margin-bottom: 40px;" label-width="70px" label="分类:">
+          <el-select v-model="postForm.categoryId" placeholder="请选择">
+            <el-option v-for="item in categorys" :key="item.id" :label="item.name" :value="item.id"/>
+          </el-select>
+        </el-form-item>
+
         <el-form-item style="margin-bottom: 40px;" label-width="70px" label="标签:">
           <el-tag
             v-for="(tag, index ) in dynamicTags"
@@ -72,6 +80,7 @@ import MDinput from '@/components/MDinput'
 import Sticky from '@/components/Sticky' // 粘性header组件
 import { validURL } from '@/utils/validate'
 import { fetchTagsList } from '@/api/tags'
+import { fetchCategoryLists } from '@/api/category'
 import { fetchArticle, createArticle, updateArticle } from '@/api/article'
 import { uploadFile } from '@/api/upload'
 import { CommentDropdown, PublishByteBlogsDropdown, CrawlerPlatformArticleDropdown, UploadCoverImageDropdown } from './Dropdown'
@@ -170,7 +179,9 @@ export default {
       inputValue: '',
       restaurants: [],
       imageUrl: '',
-      dialogVisible: false
+      dialogVisible: false,
+      categoryId: '', // 选中Id
+      categorys: [] // 所有分类
     }
   },
   computed: {
@@ -190,7 +201,8 @@ export default {
     }
   },
   created() {
-    this.getTagsList()
+    this.getCategoryList() // 分类
+    this.getTagsList() // 标签
     if (this.isEdit) {
       const id = this.$route.params && this.$route.params.id
       this.fetchData(id)
@@ -206,6 +218,11 @@ export default {
   mounted() {
   },
   methods: {
+    getCategoryList() {
+      fetchCategoryLists().then(response => {
+        this.categorys = response.models
+      })
+    },
     showPictureCardPreview(data) {
       this.postForm.thumbnail = data.extra
     },
@@ -270,14 +287,12 @@ export default {
               sourceUri: this.postForm.sourceUri, // 文章外链
               thumbnail: this.postForm.thumbnail, // 文章图片
               isComment: this.postForm.isComment,
+              categoryId: this.postForm.categoryId, // 文章分类
               isPublishByteBlogs: this.postForm.isPublishByteBlogs,
               tagsList: this.dynamicTags
             }).then(response => {
               this.postForm.status = 2
-
-              // 跳转到文章列表页
-              this.$router.push('/article/list')
-
+              this.$router.push('/article/list') // 跳转到文章列表页
               this.loading = false
             }).catch(err => {
               console.log(err)
@@ -290,6 +305,7 @@ export default {
               sourceUri: this.postForm.sourceUri, // 文章外链
               thumbnail: this.postForm.thumbnail, // 文章图片
               isComment: this.postForm.isComment,
+              categoryId:this.postForm.categoryId, // 文章分类
               isPublishByteBlogs: this.postForm.isPublishByteBlogs,
               tagsList: this.dynamicTags
             }).then(response => {
