@@ -44,6 +44,14 @@
         </template>
       </el-table-column>
 
+      <el-table-column min-width="70px" label="权重">
+        <template slot-scope="{ row }">
+          <router-link :to="'/article/edit/' + row.id" class="link-type">
+            <span>{{ row.weight }}</span>
+          </router-link>
+        </template>
+      </el-table-column>
+
       <el-table-column min-width="300px" label="标题">
         <template slot-scope="{ row }">
           <router-link :to="'/article/edit/' + row.id" class="link-type">
@@ -51,6 +59,8 @@
           </router-link>
         </template>
       </el-table-column>
+
+
 
       <el-table-column min-width="300px" label="标签">
         <template slot-scope="{ row }">
