@@ -5,7 +5,7 @@ export function fetchList(query) {
     url: '/posts/posts/v1/list',
     method: 'get',
     params: query
-  })    
+  })
 }
 
 export function fetchByteBlogsList(query) {
