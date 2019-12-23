@@ -28,7 +28,7 @@
         </template>
       </el-table-column>
 
-      <el-table-column class-name="status-col" label="文章类型" width="110">
+      <el-table-column class-name="status-col" label="文章状态" width="110">
         <template slot-scope="{ row }">
           <el-tag :type="row.status | statusFilter">
             {{ row.status === 1 ? "草稿" : "发布" }}
@@ -48,6 +48,14 @@
         <template slot-scope="{ row }">
           <router-link :to="'/article/edit/' + row.id" class="link-type">
             <span>{{ row.weight }}</span>
+          </router-link>
+        </template>
+      </el-table-column>
+
+      <el-table-column min-width="150px" label="文章分类">
+        <template slot-scope="{ row }">
+          <router-link :to="'/article/edit/' + row.id" class="link-type">
+            <span>{{ row.categoryName }}</span>
           </router-link>
         </template>
       </el-table-column>
