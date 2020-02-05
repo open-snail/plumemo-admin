@@ -1,79 +1,75 @@
+import Vue from 'vue'
 import axios from 'axios'
-import { MessageBox, Message } from 'element-ui'
 import store from '@/store'
-import { getToken } from '@/utils/auth'
+import notification from 'ant-design-vue/es/notification'
+import { VueAxios } from './axios'
+import { ACCESS_TOKEN } from '@/store/mutation-types'
 
-// create an axios instance
+// 创建 axios 实例
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API, // url = base url + request url
-  // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000 // request timeout
+  baseURL: process.env.VUE_APP_API_BASE_URL, // api base_url
+  timeout: 6000 // 请求超时时间
 })
 
-// request interceptor
-service.interceptors.request.use(
-  config => {
-    if (store.getters.token) {
-      config.headers['Authorization'] = getToken()
-    }
-    return config
-  },
-  error => {
-    console.log(error) // for debug
-    return Promise.reject(error)
-  }
-)
-
-// response interceptor
-service.interceptors.response.use(
-  /**
-   * If you want to get http information such as headers or status
-   * Please return  response => response
-  */
-
-  /**
-   * Determine the request status by custom code
-   * Here is just an example
-   * You can also judge the status by HTTP Status Code
-   */
-  response => {
-    const res = response.data
-
-    // if the custom code is not 20000, it is judged as an error.
-    if (res.resultCode !== '00000') {
-      Message({
-        message: res.message || 'Error',
-        type: 'error',
-        duration: 5 * 1000
+const err = (error) => {
+  console.log('error')
+  if (error.response) {
+    const data = error.response.data
+    const token = Vue.ls.get(ACCESS_TOKEN)
+    if (error.response.status === 403) {
+      notification.error({
+        message: 'Forbidden',
+        description: data.message
       })
-
-      // 50008: Illegal token; 50012: Other clients logged in; 50014: Token expired;
-      if (res.resultCode === 50008 || res.resultCode === 50012 || res.resultCode === 50014) {
-        // to re-login
-        MessageBox.confirm('You have been logged out, you can cancel to stay on this page, or log in again', 'Confirm logout', {
-          confirmButtonText: 'Re-Login',
-          cancelButtonText: 'Cancel',
-          type: 'warning'
-        }).then(() => {
-          store.dispatch('user/resetToken').then(() => {
-            location.reload()
-          })
+    }
+    if (error.response.status === 401 && !(data.result && data.result.isLogin)) {
+      notification.error({
+        message: 'Unauthorized',
+        description: 'Authorization verification failed'
+      })
+      if (token) {
+        store.dispatch('Logout').then(() => {
+          setTimeout(() => {
+            window.location.reload()
+          }, 1500)
         })
       }
-      return Promise.reject(new Error(res.message || 'Error'))
-    } else {
-      return res
     }
-  },
-  error => {
-    console.log('err' + error) // for debug
-    Message({
-      message: error.message,
-      type: 'error',
-      duration: 5 * 1000
-    })
-    return Promise.reject(error)
   }
-)
+  return Promise.reject(error)
+}
 
-export default service
+// request interceptor
+service.interceptors.request.use(config => {
+  const token = Vue.ls.get(ACCESS_TOKEN)
+  if (token) {
+    config.headers['Authorization'] = token // 让每个请求携带自定义 token 请根据实际情况自行修改
+  }
+  return config
+}, err)
+
+// response interceptor
+service.interceptors.response.use((response) => {
+  const res = response.data
+  if (res.resultCode !== '00000') {
+    notification.error({
+      message: res.message || 'Error',
+      duration: 3
+    })
+    return Promise.reject(new Error(res.message || 'Error'))
+  } else {
+    return res
+  }
+}, err)
+
+const installer = {
+  vm: {},
+  install (Vue) {
+    Vue.use(VueAxios, service)
+  }
+}
+
+export {
+  installer as VueAxios,
+  service as axios
+}

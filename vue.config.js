@@ -1,133 +1,123 @@
-'use strict'
 const path = require('path')
-const defaultSettings = require('./src/settings.js')
+const webpack = require('webpack')
+const createThemeColorReplacerPlugin = require('./config/plugin.config')
 
-function resolve(dir) {
+function resolve (dir) {
   return path.join(__dirname, dir)
 }
 
-const name = defaultSettings.title || 'vue Element Admin' // page title
-// If your port is set to 80,
-// use administrator privileges to execute the command line.
-// For example, Mac: sudo npm run
-const port = 8000 // dev port
+const isProd = process.env.NODE_ENV === 'production'
 
-// All configuration item explanations can be find in https://cli.vuejs.org/config/
-module.exports = {
-  /**
-   * You will need to set publicPath if you plan to deploy your site under a sub path,
-   * for example GitHub Pages. If you plan to deploy your site to https://foo.github.io/bar/,
-   * then publicPath should be set to "/bar/".
-   * In most cases please use '/' !!!
-   * Detail: https://cli.vuejs.org/config/#publicpath
-   */
-  publicPath: '/admin',
-  outputDir: 'dist',
-  assetsDir: 'static',
-  lintOnSave: process.env.NODE_ENV === 'development',
-  productionSourceMap: false,
+const assetsCDN = {
+  // webpack build externals
+  externals: {
+    vue: 'Vue',
+    'vue-router': 'VueRouter',
+    vuex: 'Vuex',
+    axios: 'axios'
+  },
+  css: [],
+  // https://unpkg.com/browse/vue@2.6.10/
+  js: [
+    '//cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.min.js',
+    '//cdn.jsdelivr.net/npm/vue-router@3.1.3/dist/vue-router.min.js',
+    '//cdn.jsdelivr.net/npm/vuex@3.1.1/dist/vuex.min.js',
+    '//cdn.jsdelivr.net/npm/axios@0.19.0/dist/axios.min.js'
+  ]
+}
+
+// vue.config.js
+const vueConfig = {
+  configureWebpack: {
+    // webpack plugins
+    plugins: [
+      // Ignore all locale files of moment.js
+      new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    ],
+    // if prod, add externals
+    externals: isProd ? assetsCDN.externals : {}
+  },
+
+  chainWebpack: (config) => {
+    config.resolve.alias
+      .set('@$', resolve('src'))
+
+    const svgRule = config.module.rule('svg')
+    svgRule.uses.clear()
+    svgRule
+      .oneOf('inline')
+      .resourceQuery(/inline/)
+      .use('vue-svg-icon-loader')
+      .loader('vue-svg-icon-loader')
+      .end()
+      .end()
+      .oneOf('external')
+      .use('file-loader')
+      .loader('file-loader')
+      .options({
+        name: 'assets/[name].[hash:8].[ext]'
+      })
+
+    // if prod is on
+    // assets require on cdn
+    if (isProd) {
+      config.plugin('html').tap(args => {
+        args[0].cdn = assetsCDN
+        return args
+      })
+    }
+  },
+
+  css: {
+    loaderOptions: {
+      less: {
+        modifyVars: {
+          // less vars，customize ant design theme
+
+          // 'primary-color': '#F5222D',
+          // 'link-color': '#F5222D',
+          // 'border-radius-base': '4px'
+        },
+        // DO NOT REMOVE THIS LINE
+        javascriptEnabled: true
+      }
+    }
+  },
+
   devServer: {
-    port: port,
-    open: false,
-    overlay: {
-      warnings: false,
-      errors: true
-    },
+    // development server port 8000
+    port: 8000,
     proxy: {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
-      [process.env.VUE_APP_BASE_API]: {
+      [process.env.VUE_APP_API_BASE_URL]: {
         target: `http://127.0.0.1:8086/api/hello-blog-service`,
         changeOrigin: true,
         pathRewrite: { '^/api/blog': '/' }
       }
     }
+    // If you want to turn on the proxy, please remove the mockjs /src/main.jsL11
+    // proxy: {
+    //   '/api': {
+    //     target: 'https://mock.ihx.me/mock/5baf3052f7da7e07e04a5116/antd-pro',
+    //     ws: false,
+    //     changeOrigin: true
+    //   }
+    // }
   },
-  configureWebpack: {
-    // provide the app's title in webpack's name field, so that
-    // it can be accessed in index.html to inject the correct title.
-    name: name,
-    resolve: {
-      alias: {
-        '@': resolve('src')
-      }
-    }
-  },
-  chainWebpack(config) {
-    config.plugins.delete('preload') // TODO: need test
-    config.plugins.delete('prefetch') // TODO: need test
 
-    // set svg-sprite-loader
-    config.module
-      .rule('svg')
-      .exclude.add(resolve('src/icons'))
-      .end()
-    config.module
-      .rule('icons')
-      .test(/\.svg$/)
-      .include.add(resolve('src/icons'))
-      .end()
-      .use('svg-sprite-loader')
-      .loader('svg-sprite-loader')
-      .options({
-        symbolId: 'icon-[name]'
-      })
-      .end()
-
-    // set preserveWhitespace
-    config.module
-      .rule('vue')
-      .use('vue-loader')
-      .loader('vue-loader')
-      .tap(options => {
-        options.compilerOptions.preserveWhitespace = true
-        return options
-      })
-      .end()
-
-    config
-      // https://webpack.js.org/configuration/devtool/#development
-      .when(process.env.NODE_ENV === 'development',
-        config => config.devtool('cheap-source-map')
-      )
-
-    config
-      .when(process.env.NODE_ENV !== 'development',
-        config => {
-          config
-            .plugin('ScriptExtHtmlWebpackPlugin')
-            .after('html')
-            .use('script-ext-html-webpack-plugin', [{
-            // `runtime` must same as runtimeChunk name. default is `runtime`
-              inline: /runtime\..*\.js$/
-            }])
-            .end()
-          config
-            .optimization.splitChunks({
-              chunks: 'all',
-              cacheGroups: {
-                libs: {
-                  name: 'chunk-libs',
-                  test: /[\\/]node_modules[\\/]/,
-                  priority: 10,
-                  chunks: 'initial' // only package third parties that are initially dependent
-                },
-                elementUI: {
-                  name: 'chunk-elementUI', // split elementUI into a single package
-                  priority: 20, // the weight needs to be larger than libs and app or it will be packaged into libs or app
-                  test: /[\\/]node_modules[\\/]_?element-ui(.*)/ // in order to adapt to cnpm
-                },
-                commons: {
-                  name: 'chunk-commons',
-                  test: resolve('src/components'), // can customize your rules
-                  minChunks: 3, //  minimum common number
-                  priority: 5,
-                  reuseExistingChunk: true
-                }
-              }
-            })
-          config.optimization.runtimeChunk('single')
-        }
-      )
-  }
+  // disable source map in production
+  productionSourceMap: false,
+  lintOnSave: false,
+  // babel-loader no-ignore node_modules/*
+  transpileDependencies: []
 }
+
+// preview.pro.loacg.com only do not use in your production;
+if (process.env.VUE_APP_PREVIEW === 'true') {
+  console.log('VUE_APP_PREVIEW', true)
+  // add `ThemeColorReplacer` plugin to webpack plugins
+  vueConfig.configureWebpack.plugins.push(createThemeColorReplacerPlugin())
+}
+
+module.exports = vueConfig
