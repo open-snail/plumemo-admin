@@ -128,9 +128,6 @@ export default {
               })
               .catch(err => {
                 console.log(err)
-                this.$notification.success({
-                  message: '新增菜单失败'
-                })
               })
           } else {
             createParams['id'] = this.id
@@ -143,9 +140,6 @@ export default {
               })
               .catch(err => {
                 console.log(err)
-                this.$notification.success({
-                  message: '编辑菜单失败'
-                })
               })
           }
           this.resetForm()

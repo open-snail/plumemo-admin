@@ -1,13 +1,18 @@
 <template>
   <div style="background-color: white">
+    <a-input
+      :placeholder="placeholder"
+      @blur="changeUrl"
+      v-model="url"/>
     <a-upload
-      action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+      action="/api/blog/file/file/v1/upload/"
       listType="picture-card"
       :fileList="fileList"
+      :remove="handleRemove"
       @preview="handlePreview"
       @change="handleChange"
     >
-      <div v-if="fileList.length < 3">
+      <div v-if="fileList.length < 1">
         <a-icon type="plus" />
         <div class="ant-upload-text">Upload</div>
       </div>
@@ -22,6 +27,9 @@
 export default {
   name: '',
   props: {
+    placeholder: {
+      type: String
+    }
   },
   components: {
   },
@@ -30,13 +38,8 @@ export default {
       previewVisible: false,
       previewImage: '',
       fileList: [
-        {
-          uid: '-1',
-          name: 'xxx.png',
-          status: 'done',
-          url: 'https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png'
-        }
-      ]
+      ],
+      url: null
     }
   },
   methods: {
@@ -49,6 +52,30 @@ export default {
     },
     handleChange ({ fileList }) {
       this.fileList = fileList
+
+      if (fileList[0] !== undefined && fileList[0].response !== undefined) {
+        this.url = fileList[0].response.extra
+        this.$emit('getImageUrl', this.url)
+      }
+    },
+    handleRemove (file) {
+      this.url = null
+    },
+    handleUrl (url) {
+      this.url = url
+      this.fileList = []
+      this.changeUrl()
+      this.$emit('getImageUrl', url)
+    },
+    changeUrl () {
+      if (this.url !== null && this.url !== undefined) {
+        this.fileList = [{
+          uid: '-1',
+          name: '上传图片',
+          status: 'done',
+          url: this.url
+        }]
+      }
     }
   },
   mounted () {
