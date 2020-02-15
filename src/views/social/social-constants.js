@@ -7,10 +7,21 @@ const table = {
       dataIndex: 'id'
     },
     {
+      title: 'code',
+      align: 'center',
+      dataIndex: 'code'
+    },
+    {
       title: '社交内容',
       align: 'center',
       dataIndex: 'content',
       scopedSlots: { customRender: 'content' }
+    },
+    {
+      title: '图标',
+      align: 'center',
+      dataIndex: 'icon',
+      scopedSlots: { customRender: 'icon' }
     },
     {
       title: '展示类型',

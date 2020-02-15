@@ -71,6 +71,16 @@
         </a-row>
         <a-row class="form-row" :gutter="16">
           <a-col :lg="24" :md="12" :sm="24">
+            <a-form-item label="图标">
+              <a-input
+                placeholder="请输入图标URL"
+                v-decorator="['icon']"
+              />
+            </a-form-item>
+          </a-col>
+        </a-row>
+        <a-row class="form-row" :gutter="16">
+          <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="备注">
               <a-input
                 placeholder="请输入备注"
@@ -208,6 +218,9 @@ export default {
                 }),
                 remark: this.$form.createFormField({
                   value: postForm.remark
+                }),
+                icon: this.$form.createFormField({
+                  value: postForm.icon
                 }),
                 isEnabled: this.$form.createFormField({
                   value: postForm.isEnabled

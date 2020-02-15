@@ -24,6 +24,12 @@
           </template>
         </span>
 
+        <span slot="icon" slot-scope="text">
+          <template>
+            <avatar-list size="large" ><avatar-list-item :tips="text" :src="text"/></avatar-list>
+          </template>
+        </span>
+
         <span slot="showType" slot-scope="text">
           <template>
             <a v-if="text === 1">图片</a>
