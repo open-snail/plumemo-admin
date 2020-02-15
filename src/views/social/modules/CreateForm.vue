@@ -11,10 +11,32 @@
         <a-row class="form-row" :gutter="16">
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="code">
-              <a-input
-                placeholder="code"
-                v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]"
-              />
+              <a-row class="form-row" :gutter="16" justify="space-between">
+                <a-col :lg="22" :md="12" :sm="24">
+                  <a-select defaultValue="QQ" placeholder="请选择code" v-if="!isAddCode" v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]">
+                    <a-select-option value="QQ">QQ</a-select-option>
+                    <a-select-option value="CSDN">CSDN</a-select-option>
+                    <a-select-option value="reward">打赏</a-select-option>
+                    <a-select-option value="qrCode">二维码</a-select-option>
+                    <a-select-option value="email">邮箱</a-select-option>
+                    <a-select-option value="sifou">思否</a-select-option>
+                    <a-select-option value="Yiminghe">开源中国</a-select-option>
+                  </a-select>
+                  <a-input
+                    v-if="isAddCode"
+                    placeholder="请输入code"
+                    v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]"
+                  />
+                </a-col>
+                <a-col :lg="2" :md="12" :sm="24">
+                  <a-button
+                    type="primary"
+                    :icon="isAddCode?'select':'plus-circle'"
+                    size="small"
+                    shape="circle"
+                    @click="handlerAddCode"></a-button>
+                </a-col>
+              </a-row>
             </a-form-item>
           </a-col>
         </a-row>
@@ -132,7 +154,8 @@ export default {
       socialFrom: this.$form.createForm(this, { name: 'create_social' }),
       icon: null,
       qrCode: null,
-      show: true
+      show: true,
+      isAddCode: false
     }
   },
   watch: {
@@ -254,6 +277,9 @@ export default {
       } else {
         this.show = false
       }
+    },
+    handlerAddCode () {
+      this.isAddCode = !this.isAddCode
     }
   }
 }

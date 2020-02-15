@@ -14,7 +14,7 @@
   "dependencies": {
     "@antv/data-set": "^0.10.2",
     "@antv/g2": "^3.5.11",
-    "ant-design-vue": "1.4.2",
+    "ant-design-vue": "1.4.11",
     "axios": "^0.19.0",
     "core-js": "^3.1.2",
     "enquire.js": "^2.1.6",
