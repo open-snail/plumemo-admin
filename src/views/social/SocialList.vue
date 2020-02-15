@@ -26,7 +26,7 @@
 
         <span slot="showType" slot-scope="text">
           <template>
-            <a v-if="text === 1">二维码</a>
+            <a v-if="text === 1">图片</a>
             <a v-if="text === 2">文本信息</a>
             <a v-if="text === 3">跳转链接</a>
           </template>
