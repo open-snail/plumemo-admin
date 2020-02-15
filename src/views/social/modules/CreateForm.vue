@@ -43,7 +43,7 @@
         <a-row class="form-row" :gutter="16">
           <a-col :lg="8" :md="12" :sm="24">
             <a-form-item label="展示类型">
-              <a-radio-group v-decorator="['showType', { initialValue: 1 }]" @change="changeShowType">
+              <a-radio-group v-decorator="['showType', { initialValue: 2 }]" @change="changeShowType">
                 <a-radio :value="1">图片</a-radio>
                 <a-radio :value="2">文本信息</a-radio>
                 <a-radio :value="3">跳转链接</a-radio>
@@ -133,7 +133,7 @@ export default {
       drawerVisible: false,
       socialFrom: this.$form.createForm(this, { name: 'create_social' }),
       content: null,
-      show: true,
+      show: false,
       isAddCode: false
     }
   },
