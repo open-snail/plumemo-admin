@@ -7,7 +7,7 @@ const table = {
       dataIndex: 'id'
     },
     {
-      title: 'content',
+      title: '社交内容',
       align: 'center',
       dataIndex: 'content',
       scopedSlots: { customRender: 'content' }
