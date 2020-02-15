@@ -16,14 +16,11 @@
         :rowSelection="options.rowSelection"
         showPagination="true"
       >
-        <span slot="icon" slot-scope="text">
+
+        <span slot="content" slot-scope="text, record">
           <template>
-            <avatar-list size="large" ><avatar-list-item :tips="text" :src="text"/></avatar-list>
-          </template>
-        </span>
-        <span slot="qrCode" slot-scope="text">
-          <template>
-            <avatar-list size="large" ><avatar-list-item :tips="text" :src="text"/></avatar-list>
+            <avatar-list v-if="record.showType===1" size="large" ><avatar-list-item :tips="text" :src="text"/></avatar-list>
+            <ellipsis v-if="record.showType!==1"  :length="10" tooltip>{{ text }}</ellipsis>
           </template>
         </span>
 
@@ -32,15 +29,24 @@
             <a v-if="text === 1">二维码</a>
             <a v-if="text === 2">文本信息</a>
             <a v-if="text === 3">跳转链接</a>
-            <a v-if="text === 4">打赏</a>
-            <a v-if="text === 5">其他</a>
+          </template>
+        </span>
+
+        <span slot="isEnabled" slot-scope="text">
+          <template>
+            <a v-if="text === 0">否</a>
+            <a v-if="text === 1">是</a>
+          </template>
+        </span>
+
+        <span slot="isHome" slot-scope="text">
+          <template>
+            <a v-if="text === 0">否</a>
+            <a v-if="text === 1">是</a>
           </template>
         </span>
 
         <span slot="remark" slot-scope="text">
-          <ellipsis :length="10" tooltip>{{ text }}</ellipsis>
-        </span>
-        <span slot="url" slot-scope="text">
           <ellipsis :length="10" tooltip>{{ text }}</ellipsis>
         </span>
 
@@ -50,13 +56,6 @@
 
         <span slot="updateTime" slot-scope="text">
           {{ text | dayjs }}
-        </span>
-
-        <span slot="isEnabled" slot-scope="text">
-          <template>
-            <a v-if="text === 0">否</a>
-            <a v-if="text === 1">是</a>
-          </template>
         </span>
 
         <span slot="action" slot-scope="text, record">

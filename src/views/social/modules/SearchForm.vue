@@ -9,19 +9,17 @@
             </a-form-item>
           </a-col>
           <a-col :md="8" :sm="24">
-            <a-form-item label="社交账户">
-              <a-input v-model="queryParam.account" placeholder="请输入code"/>
+            <a-form-item label="社交内容">
+              <a-input v-model="queryParam.content" placeholder="请输入社交内容"/>
             </a-form-item>
           </a-col>
           <template v-if="advanced">
             <a-col :md="8" :sm="24">
               <a-form-item label="展示类型">
                 <a-select v-model="queryParam.showType" placeholder="请选择" default-value="0">
-                  <a-select-option value="1">二维码</a-select-option>
+                  <a-select-option value="1">图片</a-select-option>
                   <a-select-option value="2">文本信息</a-select-option>
                   <a-select-option value="3">跳转链接</a-select-option>
-                  <a-select-option value="4">打赏</a-select-option>
-                  <a-select-option value="5">其他</a-select-option>
                 </a-select>
               </a-form-item>
             </a-col>

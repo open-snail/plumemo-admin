@@ -41,36 +41,31 @@
           </a-col>
         </a-row>
         <a-row class="form-row" :gutter="16">
-          <a-col :lg="24" :md="12" :sm="24">
-            <a-form-item label="社交账户">
-              <a-input
-                placeholder="请输入社交账户"
-                v-decorator="['account']"
-              />
+          <a-col :lg="8" :md="12" :sm="24">
+            <a-form-item label="展示类型">
+              <a-radio-group v-decorator="['showType', { initialValue: 1 }]" @change="changeShowType">
+                <a-radio :value="1">图片</a-radio>
+                <a-radio :value="2">文本信息</a-radio>
+                <a-radio :value="3">跳转链接</a-radio>
+              </a-radio-group>
             </a-form-item>
           </a-col>
         </a-row>
         <a-row class="form-row" :gutter="16">
-          <a-col :lg="24" :md="12" :sm="24">
-            <a-form-item label="icon">
-              <UpLoadImage @getImageUrl="getIconUrl" ref="handlerIconRef" :placeholder="`请输入icon`"></UpLoadImage>
+          <a-col :lg="8" :md="12" :sm="24">
+            <a-form-item label="是否启用">
+              <a-radio-group v-decorator="['isEnabled', { initialValue: 0 }]">
+                <a-radio :value="0">否</a-radio>
+                <a-radio :value="1">是</a-radio>
+              </a-radio-group>
             </a-form-item>
           </a-col>
-        </a-row>
-        <a-row class="form-row" :gutter="16" v-if="show">
-          <a-col :lg="24" :md="12" :sm="24">
-            <a-form-item label="二维码">
-              <UpLoadImage @getImageUrl="getQrCodeUrl" ref="handlerQrCodeRef" :placeholder="`请输入二维码`"></UpLoadImage>
-            </a-form-item>
-          </a-col>
-        </a-row>
-        <a-row class="form-row" :gutter="16">
-          <a-col :lg="24" :md="12" :sm="24">
-            <a-form-item label="跳转链接">
-              <a-input
-                placeholder="请输入跳转链接,eg:tencent://message/?uin=123456;https://;"
-                v-decorator="['url']"
-              />
+          <a-col :lg="8" :md="12" :sm="24">
+            <a-form-item label="是否主页社交信息">
+              <a-radio-group v-decorator="['isHome', { initialValue: 0 }]">
+                <a-radio :value="0">否</a-radio>
+                <a-radio :value="1">是</a-radio>
+              </a-radio-group>
             </a-form-item>
           </a-col>
         </a-row>
@@ -85,25 +80,10 @@
           </a-col>
         </a-row>
         <a-row class="form-row" :gutter="16">
-          <a-col :lg="8" :md="12" :sm="24">
-            <a-form-item label="展示类型">
-              <a-radio-group v-decorator="['showType', { initialValue: 1 }]" @change="changeShowType">
-                <a-radio :value="1">二维码</a-radio>
-                <a-radio :value="2">文本信息</a-radio>
-                <a-radio :value="3">跳转链接</a-radio>
-                <a-radio :value="4">打赏</a-radio>
-                <a-radio :value="5">其他</a-radio>
-              </a-radio-group>
-            </a-form-item>
-          </a-col>
-        </a-row>
-        <a-row class="form-row" :gutter="16">
-          <a-col :lg="8" :md="12" :sm="24">
-            <a-form-item label="是否启用">
-              <a-radio-group v-decorator="['isEnabled', { initialValue: 0 }]">
-                <a-radio :value="0">否</a-radio>
-                <a-radio :value="1">是</a-radio>
-              </a-radio-group>
+          <a-col :lg="24" :md="12" :sm="24">
+            <a-form-item label="社交内容">
+              <a-input v-if="!show" placeholder="请输入社交内容" v-decorator="['content']"/>
+              <UpLoadImage v-if="show" @getImageUrl="getContent" ref="handlerContentRef" :placeholder="`请输入社交内容`"></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
@@ -152,8 +132,7 @@ export default {
       id: null,
       drawerVisible: false,
       socialFrom: this.$form.createForm(this, { name: 'create_social' }),
-      icon: null,
-      qrCode: null,
+      content: null,
       show: true,
       isAddCode: false
     }
@@ -175,9 +154,10 @@ export default {
         if (!err) {
           console.log('Received values of form: ', values)
           const createParams = { ...values }
+          if (createParams['showType'] === 1) {
+            createParams['content'] = this.content
+          }
           if (this.formType === 'create') {
-            createParams['qrCode'] = this.qrCode
-            createParams['icon'] = this.icon
             createSocial(createParams)
               .then(res => {
                 this.$notification.success({
@@ -211,8 +191,7 @@ export default {
       fetchSocial(record.id)
         .then(response => {
           const postForm = response.model
-          this.$refs.handlerIconRef.handleUrl(postForm.icon)
-          this.$refs.handlerQrCodeRef.handleUrl(postForm.qrCode)
+          this.$refs.handlerContentRef.handleUrl(postForm.content)
           this.socialFrom.resetFields()
           this.socialFrom = this.$form.createForm(this, {
             onFieldsChange: (_, changedFields) => {},
@@ -221,26 +200,26 @@ export default {
                 code: this.$form.createFormField({
                   value: postForm.code
                 }),
-                account: this.$form.createFormField({
-                  value: postForm.account
+                content: this.$form.createFormField({
+                  value: postForm.content
                 }),
                 showType: this.$form.createFormField({
                   value: postForm.showType
                 }),
-                url: this.$form.createFormField({
-                  value: postForm.url
-                }),
                 remark: this.$form.createFormField({
                   value: postForm.remark
+                }),
+                isEnabled: this.$form.createFormField({
+                  value: postForm.isEnabled
+                }),
+                isHome: this.$form.createFormField({
+                  value: postForm.isHome
                 }),
                 createTime: this.$form.createFormField({
                   value: postForm.createTime
                 }),
                 updateTime: this.$form.createFormField({
                   value: postForm.updateTime
-                }),
-                isEnabled: this.$form.createFormField({
-                  value: postForm.isEnabled
                 })
               }
             },
@@ -254,11 +233,8 @@ export default {
         })
       this.drawerVisible = true
     },
-    getIconUrl (url) {
-      this.icon = url
-    },
-    getQrCodeUrl (url) {
-      this.qrCode = url
+    getContent (content) {
+      this.content = content
     },
     onClose () {
       this.resetForm()

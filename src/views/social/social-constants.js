@@ -7,26 +7,10 @@ const table = {
       dataIndex: 'id'
     },
     {
-      title: 'code',
+      title: 'content',
       align: 'center',
-      dataIndex: 'code'
-    },
-    {
-      title: '社交账户',
-      align: 'center',
-      dataIndex: 'account'
-    },
-    {
-      title: 'icon',
-      align: 'center',
-      dataIndex: 'icon',
-      scopedSlots: { customRender: 'icon' }
-    },
-    {
-      title: '二维码',
-      dataIndex: 'qrCode',
-      align: 'center',
-      scopedSlots: { customRender: 'qrCode' }
+      dataIndex: 'content',
+      scopedSlots: { customRender: 'content' }
     },
     {
       title: '展示类型',
@@ -41,10 +25,16 @@ const table = {
       scopedSlots: { customRender: 'remark' }
     },
     {
-      title: '跳转链接',
+      title: '启用',
       align: 'center',
-      dataIndex: 'url',
-      scopedSlots: { customRender: 'url' }
+      dataIndex: 'isHome',
+      scopedSlots: { customRender: 'isHome' }
+    },
+    {
+      title: '主页社交信息',
+      align: 'center',
+      dataIndex: 'isEnabled',
+      scopedSlots: { customRender: 'isEnabled' }
     },
     {
       title: '创建时间',
@@ -57,12 +47,6 @@ const table = {
       align: 'center',
       dataIndex: 'updateTime',
       scopedSlots: { customRender: 'updateTime' }
-    },
-    {
-      title: '是否启用',
-      align: 'center',
-      dataIndex: 'isEnabled',
-      scopedSlots: { customRender: 'isEnabled' }
     },
     {
       title: '操作',
