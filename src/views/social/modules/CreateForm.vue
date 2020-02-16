@@ -13,19 +13,19 @@
             <a-form-item label="code">
               <a-row class="form-row" :gutter="16" justify="space-between">
                 <a-col :lg="22" :md="12" :sm="24">
-                  <a-select defaultValue="QQ" placeholder="请选择code" v-if="!isAddCode" v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]">
+                  <a-select placeholder="请选择code" v-decorator="['code1', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]" :style="!isAddCode?'':'display: none'">
                     <a-select-option value="QQ">QQ</a-select-option>
                     <a-select-option value="CSDN">CSDN</a-select-option>
                     <a-select-option value="reward">打赏</a-select-option>
                     <a-select-option value="qrCode">二维码</a-select-option>
                     <a-select-option value="email">邮箱</a-select-option>
                     <a-select-option value="sifou">思否</a-select-option>
-                    <a-select-option value="Yiminghe">开源中国</a-select-option>
+                    <a-select-option value="oschina">开源中国</a-select-option>
                   </a-select>
                   <a-input
-                    v-if="isAddCode"
                     placeholder="请输入code"
-                    v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]"
+                    :style="isAddCode?'':'display: none'"
+                    v-decorator="['code2', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]"
                   />
                 </a-col>
                 <a-col :lg="2" :md="12" :sm="24">
@@ -43,7 +43,7 @@
         <a-row class="form-row" :gutter="16">
           <a-col :lg="8" :md="12" :sm="24">
             <a-form-item label="展示类型">
-              <a-radio-group v-decorator="['showType', { initialValue: 2 }]" @change="changeShowType">
+              <a-radio-group v-decorator="['showType', { initialValue: 1 }]" @change="changeShowType">
                 <a-radio :value="1">图片</a-radio>
                 <a-radio :value="2">文本信息</a-radio>
                 <a-radio :value="3">跳转链接</a-radio>
@@ -93,7 +93,7 @@
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="社交内容">
               <a-input v-if="!show" placeholder="请输入社交内容" v-decorator="['content']"/>
-              <UpLoadImage v-if="show" @getImageUrl="getContent" ref="handlerContentRef" :placeholder="`请输入社交内容`"></UpLoadImage>
+              <UpLoadImage @getImageUrl="getContent" ref="handlerContentRef" :placeholder="`请输入社交内容`" :imageUrl="this.content" :style="show?'':'display: none'"></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
@@ -143,7 +143,7 @@ export default {
       drawerVisible: false,
       socialFrom: this.$form.createForm(this, { name: 'create_social' }),
       content: null,
-      show: false,
+      show: true,
       isAddCode: false
     }
   },
@@ -167,6 +167,13 @@ export default {
           if (createParams['showType'] === 1) {
             createParams['content'] = this.content
           }
+
+          if (this.isAddCode) {
+            createParams['code'] = createParams.code2
+          } else {
+            createParams['code'] = createParams.code1
+          }
+
           if (this.formType === 'create') {
             createSocial(createParams)
               .then(res => {
@@ -201,15 +208,18 @@ export default {
       fetchSocial(record.id)
         .then(response => {
           const postForm = response.model
-          this.$refs.handlerContentRef.handleUrl(postForm.content)
+          if (postForm.showType === 1) {
+            this.show = true
+            this.$refs.handlerContentRef.handleUrl(postForm.content)
+          } else {
+            this.show = false
+          }
+
           this.socialFrom.resetFields()
           this.socialFrom = this.$form.createForm(this, {
             onFieldsChange: (_, changedFields) => {},
             mapPropsToFields: () => {
               return {
-                code: this.$form.createFormField({
-                  value: postForm.code
-                }),
                 content: this.$form.createFormField({
                   value: postForm.content
                 }),
@@ -228,11 +238,11 @@ export default {
                 isHome: this.$form.createFormField({
                   value: postForm.isHome
                 }),
-                createTime: this.$form.createFormField({
-                  value: postForm.createTime
+                code1: this.$form.createFormField({
+                  value: postForm.code
                 }),
-                updateTime: this.$form.createFormField({
-                  value: postForm.updateTime
+                code2: this.$form.createFormField({
+                  value: postForm.code
                 })
               }
             },
