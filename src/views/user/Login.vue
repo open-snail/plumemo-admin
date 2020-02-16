@@ -1,8 +1,8 @@
 <template>
   <div class="main">
-      <div class="title-container" style="text-align: center;" @click="handleLogin">
-        <a-icon type="github" theme="filled" :style="{ fontSize: '108px', color: '#08c' }"  />
-      </div>
+    <div class="title-container" style="text-align: center;" @click="handleLogin">
+      <a-icon type="github" theme="filled" :style="{ fontSize: '108px', color: '#08c' }" />
+    </div>
   </div>
 </template>
 
@@ -30,15 +30,13 @@ export default {
   },
   methods: {
     handleLogin () {
-      getOauthLoginByGithub().then(res => {
-        openWindow(res.model.authorizeUrl, '绑定GitHub', 540, 540)
-        window.addEventListener('message', this.loginGithubHandel, false)
-      })
+      this.loginGithubHandel()
     },
-    loginGithubHandel (e) {
-      const { socialId } = e.data
+    loginGithubHandel () {
+      const userInfo = { socialId: 'xxx', name: 'xxxx', htmlUrl: 'xxxx', avatar: 'zzz' }
+      const { socialId } = userInfo
       if (socialId) {
-        this.$store.dispatch('socialLogin', e.data).then(res => {
+        this.$store.dispatch('socialLogin', userInfo).then(res => {
           this.loginSuccess(res)
         })
         window.removeEventListener('message', this.loginGithubHandel, false)
