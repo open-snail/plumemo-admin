@@ -1,39 +1,87 @@
-# helloblog-admin
+<h1 align="center"><a href="https://github.com/byteblogs168/hello-blog-admin" target="_blank">helloblog-admin</a></h1>
 
-#### 介绍
-{**以下是码云平台说明，您可以替换此简介**
-码云是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用码云实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+> [Hello Blog](http://helloblog.byteblogs.com/) 是一个前后端分离的博客系统，为了解除开发人员对后端的束缚，真正做到的一个面向接口开发的博客系统。
+------------------------------
 
-#### 软件架构
-软件架构说明
+## 简介
 
+**hello** [hello]，意为你好(强行科普)。。
 
-#### 安装教程
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 使用说明
-
-1.  xxxx
-2.  xxxx
-3.  xxxx
-
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+> 基于[SpringBoot](https://spring.io/projects/spring-boot/)实现零配置让系统的配置更简单，使用了[Mybatis-Plus](https://mp.baomidou.com/)快速开发框架，在不是复杂的查询操作下，无需写sql就可以快速完成接口编写。
+> <br>后台管理系统使用了vue中流行的[ant](https://panjiachen.github.io/vue-element-admin-site/#/)，另外前后交互使用了[JWT](https://jwt.io/)作为令牌，进行权限、登录校验。。
 
 
-#### 码云特技
+> [官网](http://helloblog.byteblogs.com/) | [社区](https://byteblogs.com) | [QQ 交流群](shang.qq.com/wpa/qunwpa?idkey=4f8653da80e632ef86ca1d57ccf8751602940d1036c79b04a3a5bc668adf8864) | 
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  码云官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解码云上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是码云最有价值开源项目，是码云综合评定出的优秀开源项目
-5.  码云官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  码云封面人物是一档用来展示码云会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 声明
+
+> 本项目，主要宗旨在于，简单、易用、不烧脑的博客，并且基于helloblog，搭建一个属于博主们的博客圈
+>> 需要搭配后端管理系统使用<https://github.com/byteblogs168/hello-blog.git>
+## 快速开始
+
+### 克隆项目到本地
+```bash
+https://github.com/byteblogs168/hello-blog-admin.git
+```
+
+### 打开 helloblog-admin 代码后进行构建
+```bash
+npm install --registry=https://registry.npm.taobao.org
+```
+### 启动后端管理系统
+```bash
+vue-cli-service serve
+```
+
+详细文档请移步：<http://helloblog.byteblogs.com/docs/>
+
+## 博客示例
+
+请移步： <https://www.nosum.cn/>
+
+## 生态圈
+
+- 后端代码（hello-blog）：<https://github.com/byteblogs168/hello-blog>
+- 主题仓库：<https://github.com/byteblogs168/theme-default3>
+
+
+## 使用 helloblog 的优秀博主
+- 青涩知夏：<https://www.nosum.cn/>
+- 踏歌长行：<https://www.bygit.cn/>
+
+
+
+## 捐赠
+
+> 如果 helloblog 对你有帮助，可以请作者喝杯☕️。
+
+| 支付宝/微信/QQ  |
+| :------------: |
+| <img src="https://i.loli.net/2018/12/23/5c1f68ce9b884.png" width="200"/>  |
+## 预览图
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%281%29.png)
+
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%282%29.png)
+
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%283%29.png)
+
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%284%29.png)
+
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%285%29.png)
+
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%286%29.png)
+
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%287%29.png)
+
+
+![theme-walker.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%282%29.png)
+
+![theme-icarus.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%283%29.png)
+
+![install.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%284%29.png)
+
+![admin-login.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%285%29.png)
+
+![admin-dashboard.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%286%29.png)
+
+![admin-posts.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%287%29.png)
