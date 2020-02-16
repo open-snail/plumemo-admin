@@ -13,7 +13,7 @@
             <a-form-item label="code">
               <a-row class="form-row" :gutter="16" justify="space-between">
                 <a-col :lg="22" :md="12" :sm="24">
-                  <a-select placeholder="请选择code" v-decorator="['code1', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]" :style="!isAddCode?'':'display: none'">
+                  <a-select placeholder="请选择code" v-show="!isAddCode" v-decorator="['code1', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]" >
                     <a-select-option value="QQ">QQ</a-select-option>
                     <a-select-option value="CSDN">CSDN</a-select-option>
                     <a-select-option value="reward">打赏</a-select-option>
@@ -24,7 +24,7 @@
                   </a-select>
                   <a-input
                     placeholder="请输入code"
-                    :style="isAddCode?'':'display: none'"
+                    v-show="isAddCode"
                     v-decorator="['code2', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]"
                   />
                 </a-col>
@@ -92,8 +92,8 @@
         <a-row class="form-row" :gutter="16">
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="社交内容">
-              <a-input v-if="!show" placeholder="请输入社交内容" v-decorator="['content']"/>
-              <UpLoadImage @getImageUrl="getContent" ref="handlerContentRef" :placeholder="`请输入社交内容`" :imageUrl="this.content" :style="show?'':'display: none'"></UpLoadImage>
+              <a-input v-show="!show" placeholder="请输入社交内容" v-decorator="['content']"/>
+              <UpLoadImage v-show="show" @getImageUrl="getContent" ref="handlerContentRef" :placeholder="`请输入社交内容`" :imageUrl="this.content" :style="show?'':'display: none'"></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
