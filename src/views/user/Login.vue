@@ -33,7 +33,7 @@ export default {
       this.loginGithubHandel()
     },
     loginGithubHandel () {
-      const userInfo = { socialId: 'xxx', name: 'xxxx', htmlUrl: 'xxxx', avatar: 'zzz' }
+      const userInfo = { socialId: 'helloblog', name: '测试账号', htmlUrl: 'http://helloblog.byteblogs.com/docs/', avatar: 'http://helloblog.byteblogs.com/docs/logo-mini.png' }
       const { socialId } = userInfo
       if (socialId) {
         this.$store.dispatch('socialLogin', userInfo).then(res => {
