@@ -15,7 +15,6 @@
         style="text-align: center"
       >
         <a-button htmlType="submit" type="primary">提交</a-button>
-        <a-button style="margin-left: 8px">保存</a-button>
       </a-form-item>
     </a-form>
   </a-card>
