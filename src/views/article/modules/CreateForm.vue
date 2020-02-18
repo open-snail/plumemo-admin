@@ -232,30 +232,24 @@ export default {
             createArticle(createParams)
               .then(response => {
                 this.$notification.success({
-                  message: '新增文章成功'
+                  message: response.message
                 })
                 this.$emit('refreshTable')
               })
               .catch(err => {
                 console.log(err)
-                this.$notification.success({
-                  message: '新增文章失败'
-                })
               })
           } else {
             createParams['id'] = this.id
             updateArticle(createParams)
               .then(response => {
                 this.$notification.success({
-                  message: '编辑文章成功'
+                  message: response.message
                 })
                 this.$emit('refreshTable')
               })
               .catch(err => {
                 console.log(err)
-                this.$notification.success({
-                  message: '编辑文章失败'
-                })
               })
           }
 
