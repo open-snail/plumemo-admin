@@ -29,7 +29,7 @@
         <span slot="action" slot-scope="text, record">
           <template>
             <a-popconfirm
-              title="确定删除这个用户？"
+              title="确定删除？"
               @confirm="handleDelete(record)"
               @cancel="cancel"
               okText="Yes"

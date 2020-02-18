@@ -11,7 +11,7 @@
 > <br>后台管理系统使用了vue中流行的[ant](https://panjiachen.github.io/vue-element-admin-site/#/)，另外前后交互使用了[JWT](https://jwt.io/)作为令牌，进行权限、登录校验。。
 
 
-> [官网](http://helloblog.byteblogs.com/) | [社区](https://byteblogs.com) | [QQ 交流群](shang.qq.com/wpa/qunwpa?idkey=4f8653da80e632ef86ca1d57ccf8751602940d1036c79b04a3a5bc668adf8864) | 
+> [官网](http://helloblog.byteblogs.com/) | [社区](https://byteblogs.com) | [QQ 交流群](https://shang.qq.com/wpa/qunwpa?idkey=4f8653da80e632ef86ca1d57ccf8751602940d1036c79b04a3a5bc668adf8864) | 
 
 ## 声明
 
@@ -21,7 +21,7 @@
 
 ### 克隆项目到本地
 ```bash
-https://github.com/byteblogs168/hello-blog-admin.git
+clone https://github.com/byteblogs168/hello-blog-admin.git
 ```
 
 ### 打开 helloblog-admin 代码后进行构建
@@ -37,7 +37,7 @@ vue-cli-service serve
 
 ## 博客示例
 
-请移步： <https://www.nosum.cn/>
+请移步： <https://preview.byteblogs.com/>
 
 ## 生态圈
 
@@ -55,33 +55,34 @@ vue-cli-service serve
 
 > 如果 helloblog 对你有帮助，可以请作者喝杯☕️。
 
-| 支付宝/微信/QQ  |
-| :------------: |
-| <img src="https://i.loli.net/2018/12/23/5c1f68ce9b884.png" width="200"/>  |
+| 支付宝  | 微信 |
+| :------------: |  :------------: |
+| <img src="http://image.byteblogs.com/FvM2HsxIesxN41bPJCtRpUi8LQgA" width="200"/>  |  <img src="http://image.byteblogs.com/Fn33krSt1uIm4sgqBE67fkZL2-__" width="200"/>
+
 ## 预览图
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%281%29.png)
 
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%282%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%281%29.png" width="600"/>
 
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%283%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%282%29.png" width="600"/>
 
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%284%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%283%29.png" width="600"/>
 
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%285%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%284%29.png" width="600"/>
 
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%286%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%285%29.png" width="600"/>
 
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%287%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%286%29.png" width="600"/>
 
+<img src="https://cos.nosum.cn/preview/helloblog-theme/helloblog-theme3-perview%20%287%29.png" width="600"/>
 
-![theme-walker.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%282%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%282%29.png" width="600"/>
 
-![theme-icarus.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%283%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%283%29.png" width="600"/>
 
-![install.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%284%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%284%29.png" width="600"/>
 
-![admin-login.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%285%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%285%29.png" width="600"/>
 
-![admin-dashboard.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%286%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%286%29.png" width="600"/>
 
-![admin-posts.png](https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%287%29.png)
+<img src="https://cos.nosum.cn/preview/helloblog-admin/helloblog-admin-preview%20%287%29.png" width="600"/>
