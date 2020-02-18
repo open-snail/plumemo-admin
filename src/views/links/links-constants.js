@@ -17,6 +17,11 @@ const table = {
       dataIndex: 'name'
     },
     {
+      title: '友链标题',
+      align: 'center',
+      dataIndex: 'title'
+    },
+    {
       title: 'logo',
       dataIndex: 'logo',
       align: 'center',

@@ -18,6 +18,18 @@
             </a-form-item>
           </a-col>
         </a-row>
+
+        <a-row class="form-row" :gutter="16">
+          <a-col :lg="24" :md="12" :sm="24">
+            <a-form-item label="友链标题">
+              <a-input
+                placeholder="请输入友链标题"
+                v-decorator="['title', { rules: [{ required: true, message: '请输入友链标题', whitespace: true }] }]"
+              />
+            </a-form-item>
+          </a-col>
+        </a-row>
+
         <a-row class="form-row" :gutter="16">
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="友链Logo">
@@ -41,7 +53,7 @@
             <a-form-item label="友链排序">
               <a-input
                 placeholder="友链排序"
-                v-decorator="['sort', { rules: [{ required: false, message: 'sort', whitespace: true }] }]"
+                v-decorator="['sort']"
               />
             </a-form-item>
           </a-col>
@@ -163,6 +175,9 @@ export default {
               return {
                 name: this.$form.createFormField({
                   value: postForm.name
+                }),
+                title: this.$form.createFormField({
+                  value: postForm.title
                 }),
                 href: this.$form.createFormField({
                   value: postForm.href
