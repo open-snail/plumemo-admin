@@ -14,6 +14,7 @@
               <a-row class="form-row" :gutter="16" justify="space-between">
                 <a-col :lg="22" :md="12" :sm="24">
                   <a-select placeholder="请选择code" v-show="!isAddCode" v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]" >
+                    <a-select-option value="byteblogs">ByteBlogs</a-select-option>
                     <a-select-option value="QQ">QQ</a-select-option>
                     <a-select-option value="CSDN">CSDN</a-select-option>
                     <a-select-option value="reward">打赏</a-select-option>
