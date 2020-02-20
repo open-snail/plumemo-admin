@@ -13,7 +13,7 @@
             <a-form-item label="code">
               <a-row class="form-row" :gutter="16" justify="space-between">
                 <a-col :lg="22" :md="12" :sm="24">
-                  <a-select placeholder="请选择code" v-show="!isAddCode" v-decorator="['code1', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]" >
+                  <a-select placeholder="请选择code" v-show="!isAddCode" v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]" >
                     <a-select-option value="QQ">QQ</a-select-option>
                     <a-select-option value="CSDN">CSDN</a-select-option>
                     <a-select-option value="reward">打赏</a-select-option>
@@ -25,7 +25,7 @@
                   <a-input
                     placeholder="请输入code"
                     v-show="isAddCode"
-                    v-decorator="['code2', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]"
+                    v-decorator="['code', { rules: [{ required: true, message: '请输入code', whitespace: true }] }]"
                   />
                 </a-col>
                 <a-col :lg="2" :md="12" :sm="24">
@@ -168,12 +168,6 @@ export default {
             createParams['content'] = this.content
           }
 
-          if (this.isAddCode) {
-            createParams['code'] = createParams.code2
-          } else {
-            createParams['code'] = createParams.code1
-          }
-
           if (this.formType === 'create') {
             createSocial(createParams)
               .then(res => {
@@ -238,10 +232,7 @@ export default {
                 isHome: this.$form.createFormField({
                   value: postForm.isHome
                 }),
-                code1: this.$form.createFormField({
-                  value: postForm.code
-                }),
-                code2: this.$form.createFormField({
+                code: this.$form.createFormField({
                   value: postForm.code
                 })
               }
