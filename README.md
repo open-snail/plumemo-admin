@@ -42,7 +42,7 @@ vue-cli-service serve
 ## 生态圈
 
 - 后端代码（hello-blog）：<https://github.com/byteblogs168/hello-blog>
-- 主题仓库：<https://github.com/byteblogs168/theme-default3>
+- 主题仓库：<https://github.com/byteblogs168/theme-react-sakura/>
 
 
 ## 使用 helloblog 的优秀博主
