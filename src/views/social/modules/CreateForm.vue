@@ -94,7 +94,13 @@
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="社交内容">
               <a-input v-show="!show" placeholder="请输入社交内容" v-decorator="['content']"/>
-              <UpLoadImage v-show="show" @getImageUrl="getContent" ref="handlerContentRef" :placeholder="`请输入社交内容`" :imageUrl="this.content" :style="show?'':'display: none'"></UpLoadImage>
+              <UpLoadImage
+                v-show="show"
+                @getImageUrl="getContent"
+                ref="handlerContentRef"
+                :placeholder="`请输入社交内容`"
+                :imageUrl="this.content"
+                :style="show?'':'display: none'"></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
@@ -257,6 +263,7 @@ export default {
       this.$emit('resetData', false)
     },
     resetForm () {
+      this.show = true
       this.socialFrom.resetFields()
     },
     handleSelectChange (value) {
