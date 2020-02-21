@@ -30,13 +30,15 @@ export default {
   },
   methods: {
     handleLogin () {
-      this.loginGithubHandel()
+      getOauthLoginByGithub().then(res => {
+        openWindow(res.model.authorizeUrl, '绑定GitHub', 540, 540)
+        window.addEventListener('message', this.loginGithubHandel, false)
+      })
     },
-    loginGithubHandel () {
-      const userInfo = { socialId: 'helloblog', name: '测试账号', htmlUrl: 'http://helloblog.byteblogs.com/docs/', avatar: 'http://helloblog.byteblogs.com/docs/logo-mini.png' }
-      const { socialId } = userInfo
+    loginGithubHandel (e) {
+      const { socialId } = e.data
       if (socialId) {
-        this.$store.dispatch('socialLogin', userInfo).then(res => {
+        this.$store.dispatch('socialLogin', e.data).then(res => {
           this.loginSuccess(res)
         })
         window.removeEventListener('message', this.loginGithubHandel, false)
