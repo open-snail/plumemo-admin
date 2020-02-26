@@ -33,10 +33,12 @@
         <a-row class="form-row" :gutter="16">
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="友链Logo">
-              <a-input
-                placeholder="请输入友链Logo"
-                v-decorator="['logo', { rules: [{ required: true, message: '请输入友链Logo', whitespace: true }] }]"
-              />
+              <UpLoadImage
+                @getImageUrl="getLogo"
+                :placeholder="`请选择图标`"
+                ref="handlerLogoRef"
+                :imageUrl="this.logo"
+              ></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
@@ -91,8 +93,13 @@
 
 <script>
 import { createLink, fetchLink, updateLink } from '@/api/link'
+import UpLoadImage from '@/components/UpLoadImageAndFillInput/UpLoadImage'
+
 export default {
   name: 'CreateLinksForm',
+  components: {
+    UpLoadImage
+  },
   props: {
     formType: {
       type: String,
@@ -106,6 +113,7 @@ export default {
     return {
       title: '新增友链',
       id: null,
+      logo: null,
       drawerVisible: false,
       linksForm: this.$form.createForm(this, { name: 'create_links' })
     }
@@ -127,6 +135,7 @@ export default {
         if (!err) {
           console.log('Received values of form: ', values)
           const createParams = { ...values }
+          createParams['logo'] = this.logo
           if (this.formType === 'create') {
             createLink(createParams)
               .then(res => {
@@ -168,6 +177,7 @@ export default {
       fetchLink(record.id)
         .then(response => {
           const postForm = response.model
+          this.$refs.handlerLogoRef.handleUrl(postForm.logo)
           this.linksForm.resetFields()
           this.linksForm = this.$form.createForm(this, {
             onFieldsChange: (_, changedFields) => {},
@@ -211,6 +221,9 @@ export default {
     },
     resetForm () {
       this.linksForm.resetFields()
+    },
+    getLogo (logo) {
+      this.logo = logo
     },
     handleSelectChange (value) {
       console.log(`Selected: ${value}`)

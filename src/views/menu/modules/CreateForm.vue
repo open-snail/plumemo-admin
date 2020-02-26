@@ -21,10 +21,12 @@
         <a-row class="form-row" :gutter="16">
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="菜单icon">
-              <a-input
-                placeholder="请输入菜单icon"
-                v-decorator="['icon', { rules: [{ required: true, message: '请输入菜单icon', whitespace: true }] }]"
-              />
+              <UpLoadImage
+                @getImageUrl="getIcon"
+                :placeholder="`请选择图标`"
+                ref="handlerIconRef"
+                :imageUrl="this.icon"
+              ></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
@@ -81,9 +83,13 @@
 
 <script>
 import { createMenu, fetchMenu, updateMenu } from '../../../api/menu'
+import UpLoadImage from '@/components/UpLoadImageAndFillInput/UpLoadImage'
 
 export default {
   name: 'CreateMenuForm',
+  components: {
+    UpLoadImage
+  },
   props: {
     formType: {
       type: String,
@@ -98,6 +104,7 @@ export default {
       title: '新增菜单',
       id: null,
       drawerVisible: false,
+      icon: null,
       menuForm: this.$form.createForm(this, { name: 'create_menu' })
     }
   },
@@ -118,6 +125,7 @@ export default {
         if (!err) {
           console.log('Received values of form: ', values)
           const createParams = { ...values }
+          createParams['icon'] = this.icon
           if (this.formType === 'create') {
             createMenu(createParams)
               .then(res => {
@@ -153,6 +161,7 @@ export default {
       fetchMenu(record.id)
         .then(response => {
           const postForm = response.model
+          this.$refs.handlerIconRef.handleUrl(postForm.icon)
           this.menuForm.resetFields()
           this.menuForm = this.$form.createForm(this, {
             onFieldsChange: (_, changedFields) => {},
@@ -193,6 +202,9 @@ export default {
     },
     resetForm () {
       this.menuForm.resetFields()
+    },
+    getIcon (icon) {
+      this.icon = icon
     },
     handleSelectChange (value) {
       console.log(`Selected: ${value}`)
