@@ -3,10 +3,8 @@
     <div class="container">
       <div class="top">
         <div class="header">
-          <a href="/">
-            <img src="~@/assets/logo.png" class="logo" alt="logo">
-            <span class="title">欢迎登陆HelloBlog后台管理系统</span>
-          </a>
+          <img src="~@/assets/logo.png" class="logo" alt="logo">
+          <span class="title">欢迎登陆HelloBlog后台管理系统</span>
         </div>
         <div class="desc">
           一个简单通用的前后分离的博客系统

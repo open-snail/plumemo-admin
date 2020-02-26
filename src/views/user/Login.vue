@@ -1,8 +1,14 @@
 <template>
   <div class="main">
-    <div class="title-container" style="text-align: center;" @click="handleLogin">
-      <a-icon type="github" theme="filled" :style="{ fontSize: '108px', color: '#08c' }" />
-    </div>
+    <a-tooltip placement="bottom">
+      <template slot="title">
+        <span>点击登录</span>
+      </template>
+      <div class="title-container" style="text-align: center;cursor: pointer" @click="handleLogin">
+        <a-icon type="github" theme="filled" :style="{ fontSize: '108px', color: '#08c' }" />
+      </div>
+    </a-tooltip>
+
   </div>
 </template>
 
