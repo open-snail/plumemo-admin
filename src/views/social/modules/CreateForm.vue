@@ -73,10 +73,10 @@
         <a-row class="form-row" :gutter="16">
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="图标">
-              <a-input
-                placeholder="请输入图标URL"
-                v-decorator="['icon']"
-              />
+              <UpLoadImage
+                @getImageUrl="getIcon"
+                :placeholder="`请选择图标`"
+                :imageUrl="this.icon"></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
@@ -150,7 +150,9 @@ export default {
       drawerVisible: false,
       socialFrom: this.$form.createForm(this, { name: 'create_social' }),
       content: null,
+      icon: null,
       show: true,
+      iconShow: true,
       isAddCode: false
     }
   },
@@ -174,6 +176,7 @@ export default {
           if (createParams['showType'] === 1) {
             createParams['content'] = this.content
           }
+          createParams['icon'] = this.icon
 
           if (this.formType === 'create') {
             createSocial(createParams)
@@ -256,6 +259,9 @@ export default {
     },
     getContent (content) {
       this.content = content
+    },
+    getIcon (icon) {
+      this.icon = icon
     },
     onClose () {
       this.resetForm()
