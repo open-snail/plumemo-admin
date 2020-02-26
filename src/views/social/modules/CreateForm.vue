@@ -76,7 +76,9 @@
               <UpLoadImage
                 @getImageUrl="getIcon"
                 :placeholder="`请选择图标`"
-                :imageUrl="this.icon"></UpLoadImage>
+                ref="handlerIconRef"
+                :imageUrl="this.icon"
+              ></UpLoadImage>
             </a-form-item>
           </a-col>
         </a-row>
@@ -215,6 +217,7 @@ export default {
           if (postForm.showType === 1) {
             this.show = true
             this.$refs.handlerContentRef.handleUrl(postForm.content)
+            this.$refs.handlerIconRef.handleUrl(postForm.icon)
           } else {
             this.show = false
           }
