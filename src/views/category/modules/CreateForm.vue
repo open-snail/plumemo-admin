@@ -111,14 +111,16 @@ export default {
           const createParams = { ...values }
 
           const arr = []
-          createParams.tagsList.forEach((item, index) => {
-            this.dynamicTags.forEach(item1 => {
-              console.log('item1.id=' + item1.id + ',item=' + Number(item) + 'itemStr=' + item)
-              if (item1.id === Number(item)) {
-                arr[index] = item1
-              }
+          if (createParams.tagsList !== undefined) {
+            createParams.tagsList.forEach((item, index) => {
+              this.dynamicTags.forEach(item1 => {
+                console.log('item1.id=' + item1.id + ',item=' + Number(item) + 'itemStr=' + item)
+                if (item1.id === Number(item)) {
+                  arr[index] = item1
+                }
+              })
             })
-          })
+          }
           createParams.tagsList = [...arr]
           if (this.formType === 'create') {
             createCategory(createParams)
