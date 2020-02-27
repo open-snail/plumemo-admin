@@ -208,13 +208,15 @@ export default {
           const createParams = { ...values }
 
           const arr = []
-          createParams.tagsList.forEach((item, index) => {
-            this.dynamicTags.forEach(item1 => {
-              if (item1.id === Number(item)) {
-                arr[index] = item1
-              }
+          if (createParams.tagsList !== undefined) {
+            createParams.tagsList.forEach((item, index) => {
+              this.dynamicTags.forEach(item1 => {
+                if (item1.id === Number(item)) {
+                  arr[index] = item1
+                }
+              })
             })
-          })
+          }
 
           createParams.tagsList = [...arr]
           // 1 草稿 2 文章
@@ -300,7 +302,7 @@ export default {
                   value: postForm.isComment
                 }),
                 categoryId: this.$form.createFormField({
-                  value: postForm.categoryId + ''
+                  value: postForm.categoryId === 0 ? '' : postForm.categoryId + ''
                 }),
                 weight: this.$form.createFormField({
                   value: postForm.weight
