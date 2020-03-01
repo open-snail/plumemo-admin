@@ -2,7 +2,7 @@ import { axios } from '@/utils/request'
 
 export function login (data) {
   return axios({
-    url: '/auth/user/v1/login',
+    url: '/auth/admin/v1/login',
     method: 'post',
     data
   })

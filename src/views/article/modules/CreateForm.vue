@@ -270,11 +270,14 @@ export default {
           console.log(postForm)
           this.tagsList = postForm.tagsList
           this.content = postForm.content
-          this.fileList[0] = {
-            uid: '-1',
-            name: 'xxx.png',
-            status: 'done',
-            url: postForm.thumbnail
+
+          if (postForm.thumbnail !== null && postForm.thumbnail !== undefined) {
+            this.fileList[0] = {
+              uid: '-1',
+              name: 'xxx.png',
+              status: 'done',
+              url: postForm.thumbnail
+            }
           }
 
           const arr = []
@@ -302,7 +305,7 @@ export default {
                   value: postForm.isComment
                 }),
                 categoryId: this.$form.createFormField({
-                  value: postForm.categoryId === 0 ? '' : postForm.categoryId + ''
+                  value: postForm.categoryId === 0 || postForm.categoryId === undefined ? '' : postForm.categoryId + ''
                 }),
                 weight: this.$form.createFormField({
                   value: postForm.weight

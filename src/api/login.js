@@ -14,7 +14,15 @@ import { axios } from '@/utils/request'
  */
 export function login (parameter) {
   return axios({
-    url: '/auth/login',
+    url: '/auth/admin/v1/login',
+    method: 'post',
+    data: parameter
+  })
+}
+
+export function register (parameter) {
+  return axios({
+    url: '/auth/admin/v1/register',
     method: 'post',
     data: parameter
   })
@@ -22,7 +30,7 @@ export function login (parameter) {
 
 export function getSmsCaptcha (parameter) {
   return axios({
-    url: api.SendSms,
+    url: '/byteblogs/email/v1/send',
     method: 'post',
     data: parameter
   })
