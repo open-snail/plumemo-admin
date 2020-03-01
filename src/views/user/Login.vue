@@ -105,9 +105,7 @@ export default {
 
       state.loginBtn = true
       const validateFieldsKey = ['email', 'password']
-      console.log('111111')
       validateFields(validateFieldsKey, { force: true }, (err, values) => {
-        console.log('22222')
         if (!err) {
           console.log('login form', values)
           const loginParams = { ...values }

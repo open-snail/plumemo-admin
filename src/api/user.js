@@ -8,6 +8,14 @@ export function login (data) {
   })
 }
 
+export function updatePassword (data) {
+  return axios({
+    url: '/auth/password/v1/update',
+    method: 'put',
+    data
+  })
+}
+
 export function getInfo (token) {
   return axios({
     url: '/auth/user/v1/get',

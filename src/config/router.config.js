@@ -213,6 +213,12 @@ export const asyncRouterMap = [
                 name: 'BaseSettings',
                 component: () => import('@/views/account/settings/BaseSetting'),
                 meta: { title: '基本设置', permission: [ 'user' ] }
+              },
+              {
+                path: '/account/settings/password',
+                name: 'UpdatePassword',
+                component: () => import('@/views/account/settings/UpdatePassword'),
+                meta: { title: '修改密码', keepAlive: true, permission: [ 'user' ] }
               }
             ]
           }
