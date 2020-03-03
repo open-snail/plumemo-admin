@@ -22,6 +22,7 @@
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="菜单icon">
               <UpLoadImage
+                v-model="this.icon"
                 @getImageUrl="getIcon"
                 :placeholder="`请选择图标`"
                 ref="handlerIconRef"

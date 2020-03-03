@@ -34,6 +34,7 @@
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="友链Logo">
               <UpLoadImage
+                v-model="this.logo"
                 @getImageUrl="getLogo"
                 :placeholder="`请选择图标`"
                 ref="handlerLogoRef"

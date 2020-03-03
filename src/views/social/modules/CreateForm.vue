@@ -74,6 +74,7 @@
           <a-col :lg="24" :md="12" :sm="24">
             <a-form-item label="图标">
               <UpLoadImage
+                v-model="this.icon"
                 @getImageUrl="getIcon"
                 :placeholder="`请选择图标`"
                 ref="handlerIconRef"
@@ -98,6 +99,7 @@
               <a-input v-show="!show" placeholder="请输入社交内容" v-decorator="['content']"/>
               <UpLoadImage
                 v-show="show"
+                v-model="this.content"
                 @getImageUrl="getContent"
                 ref="handlerContentRef"
                 :placeholder="`请输入社交内容`"
