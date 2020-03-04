@@ -78,7 +78,6 @@
                 @getImageUrl="getIcon"
                 :placeholder="`请选择图标`"
                 ref="handlerIconRef"
-                :imageUrl="this.icon"
               ></UpLoadImage>
             </a-form-item>
           </a-col>
@@ -218,11 +217,11 @@ export default {
           if (postForm.showType === 1) {
             this.show = true
             this.$refs.handlerContentRef.handleUrl(postForm.content)
-            this.$refs.handlerIconRef.handleUrl(postForm.icon)
           } else {
             this.show = false
           }
 
+          this.$refs.handlerIconRef.handleUrl(postForm.icon)
           this.socialFrom.resetFields()
           this.socialFrom = this.$form.createForm(this, {
             onFieldsChange: (_, changedFields) => {},
@@ -275,6 +274,8 @@ export default {
     resetForm () {
       this.show = true
       this.socialFrom.resetFields()
+      this.$refs.handlerContentRef.handleUrl(null)
+      this.$refs.handlerIconRef.handleUrl(null)
     },
     handleSelectChange (value) {
       console.log(`Selected: ${value}`)

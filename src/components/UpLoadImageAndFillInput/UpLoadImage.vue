@@ -76,6 +76,8 @@ export default {
           url: this.url
         }]
         this.$emit('getImageUrl', this.url)
+      } else {
+        this.fileList = []
       }
     }
   },
