@@ -38,14 +38,14 @@ const table = {
     {
       title: '启用',
       align: 'center',
-      dataIndex: 'isHome',
-      scopedSlots: { customRender: 'isHome' }
+      dataIndex: 'isEnabled',
+      scopedSlots: { customRender: 'isEnabled' }
     },
     {
       title: '主页社交信息',
       align: 'center',
-      dataIndex: 'isEnabled',
-      scopedSlots: { customRender: 'isEnabled' }
+      dataIndex: 'isHome',
+      scopedSlots: { customRender: 'isHome' }
     },
     {
       title: '创建时间',

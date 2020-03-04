@@ -39,31 +39,13 @@ export const asyncRouterMap = [
             name: 'ArticleList',
             component: () => import('@/views/article/ArticleList'),
             meta: { title: '文章列表', keepAlive: false }
-          }
-        ]
-      },
-      // category
-      {
-        path: '/category',
-        redirect: '/category/list',
-        component: PageView,
-        meta: { title: '分类管理', icon: 'table' },
-        children: [
+          },
           {
             path: '/category/list',
             name: 'CategoryList',
             component: () => import('@/views/category/CategoryList'),
             meta: { title: '分类列表', keepAlive: false }
-          }
-        ]
-      },
-      // tags
-      {
-        path: '/tags',
-        redirect: '/tags/list',
-        component: PageView,
-        meta: { title: '标签管理', icon: 'profile' },
-        children: [
+          },
           {
             path: '/tags/list',
             name: 'TagsList',

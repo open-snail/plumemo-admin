@@ -75,6 +75,7 @@ export default {
           status: 'done',
           url: this.url
         }]
+        this.$emit('getImageUrl', this.url)
       }
     }
   },

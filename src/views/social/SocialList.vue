@@ -99,6 +99,7 @@ import SearchForm from './modules/SearchForm'
 import { filters, table } from './social-constants'
 import AvatarList from '@/components/AvatarList'
 import { fetchSocialList } from '@/api/social'
+import { deleteSocial } from '../../api/social'
 const AvatarListItem = AvatarList.AvatarItem
 export default {
   name: 'SocialList',
@@ -148,6 +149,14 @@ export default {
       this.$refs.createSocialForm.handleEdit(record)
       this.formType = 'edit'
       this.visible = true
+    },
+    handleDelete (row) {
+      deleteSocial(row.id).then(res => {
+        this.$notification.success({
+          message: '删除成功'
+        })
+        this.$refs.table.refresh()
+      })
     },
     resetData (flag) {
       this.visible = flag
