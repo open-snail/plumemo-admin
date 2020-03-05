@@ -24,8 +24,7 @@ const table = {
     {
       title: 'icon',
       dataIndex: 'icon',
-      align: 'center',
-      scopedSlots: { customRender: 'icon' }
+      align: 'center'
     },
     {
       title: '跳转路径',

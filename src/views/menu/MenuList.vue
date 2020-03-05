@@ -15,12 +15,6 @@
         :rowSelection="options.rowSelection"
         showPagination="true"
       >
-        <span slot="icon" slot-scope="text, record">
-          <template>
-            <avatar-list size="large" ><avatar-list-item :tips="record.title" :src="text"/></avatar-list>
-          </template>
-        </span>
-
         <span slot="action" slot-scope="text, record">
           <template>
             <a @click="handleEdit(record)">编辑</a>

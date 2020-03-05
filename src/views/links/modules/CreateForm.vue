@@ -222,6 +222,7 @@ export default {
     },
     resetForm () {
       this.linksForm.resetFields()
+      this.$refs.handlerLogoRef.handleUrl(null)
     },
     getLogo (logo) {
       this.logo = logo
