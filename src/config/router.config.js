@@ -51,6 +51,12 @@ export const asyncRouterMap = [
             name: 'TagsList',
             component: () => import('@/views/tags/TagsList'),
             meta: { title: '标签列表', keepAlive: false }
+          },
+          {
+            path: '/comment/list',
+            name: 'CommentList',
+            component: () => import('@/views/comment/CommentList'),
+            meta: { title: '评论管理', keepAlive: false }
           }
         ]
       },
