@@ -124,12 +124,6 @@ export default {
               })
               this.$emit('refreshTable')
             })
-            .catch(err => {
-              console.log(err)
-              this.$notification.success({
-                message: '编辑七牛云信息失败'
-              })
-            })
         }
       })
     },

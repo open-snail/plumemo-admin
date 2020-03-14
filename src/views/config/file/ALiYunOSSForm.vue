@@ -46,7 +46,7 @@
         :labelCol="{lg: {span: 7}, sm: {span: 7}}"
         :wrapperCol="{lg: {span: 10}, sm: {span: 17} }">
         <a-input
-          v-decorator="['ossPath',{rules: [{ required: false, message: '输入你的文件路径' }]}]"
+          v-decorator="['ossPath',{rules: [{ required: true, message: '输入你的文件路径' }]}]"
           name="ossPath"
           placeholder="helloblog/image/" />
       </a-form-item>
@@ -126,7 +126,7 @@ export default {
             'configValue': values.ossPath
           },
           {
-            'configKey': 'aliyun_oss_image_domain',
+            'configKey': 'aliyun_oss_endpoint',
             'configValue': values.endpoint
           },
           {
@@ -139,12 +139,6 @@ export default {
               message: '编辑ALiYunOSS信息成功'
             })
             this.$emit('refreshTable')
-          })
-          .catch(err => {
-            console.log(err)
-            this.$notification.success({
-              message: '编辑ALiYunOSS信息失败'
-            })
           })
       })
     },
