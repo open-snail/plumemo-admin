@@ -91,7 +91,7 @@ const vueConfig = {
       // change xxx-api/login => mock/login
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_API_BASE_URL]: {
-        target: `http://127.0.0.1:8086/api/hello-blog-service`,
+        target: `http://127.0.0.1:8086/api/plumemo-service`,
         changeOrigin: true,
         pathRewrite: { '^/api/blog': '/' }
       }

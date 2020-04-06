@@ -4,6 +4,7 @@
       <SearchForm ref="searchForm" @reloadData="reloadData"/>
       <div class="table-operator">
         <a-button type="primary" icon="plus" @click="createHandler">新建</a-button>
+        <a-button type="primary" icon="import" @click="importHandler">导入</a-button>
       </div>
       <s-table
         ref="table"
@@ -60,6 +61,11 @@
         @resetData="resetData"
         @refreshTable="refreshTable"
       />
+
+      <ImportFormForm
+        @refreshTable="refreshTable"
+        ref="importFormFormForm"
+      />
     </a-card>
   </div>
 </template>
@@ -68,6 +74,7 @@
 import { fetchList, updateArticleStatus, deletePosts, publishByteBlogs } from '@/api/article'
 import { STable, Ellipsis } from '@/components'
 import CreateArticleForm from './modules/CreateForm'
+import ImportFormForm from './modules/ImportForm'
 import SearchForm from './modules/SearchForm'
 import { filters, table } from './article-constants'
 export default {
@@ -76,7 +83,8 @@ export default {
     STable,
     Ellipsis,
     CreateArticleForm,
-    SearchForm
+    SearchForm,
+    ImportFormForm
   },
   filters: filters,
   data () {
@@ -180,6 +188,9 @@ export default {
         duration: 1000
       })
       this.postForm.status = 1
+    },
+    importHandler () {
+      this.$refs.importFormFormForm.showDrawerVisible(true)
     }
   }
 }

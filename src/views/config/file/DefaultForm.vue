@@ -41,7 +41,7 @@ export default {
   name: 'DefaultForm',
   data () {
     return {
-      description: '定义站点图片存储地址，默认为hello/blog/，当没有启用任何云存储时，将使用默认的服务器OSS配置',
+      description: '定义站点图片存储地址，默认为windos:(D:/plumemo/blog/);linux:(/home/plumemo/blog/)，当没有启用任何云存储时，将使用默认的服务器OSS配置',
       value: 0,
       form: this.$form.createForm(this),
       data: {}

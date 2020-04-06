@@ -70,3 +70,12 @@ export function publishByteBlogs (data) {
     data
   })
 }
+
+export function importDataByDB (data) {
+  return axios({
+    url: '/blog-move/v1/mysql',
+    method: 'post',
+    timeout: 5000000,
+    data
+  })
+}

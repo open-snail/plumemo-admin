@@ -35,14 +35,14 @@
               </a-radio-group>
             </a-form-item>
           </a-col>
-          <a-col :lg="8" :md="12" :sm="24">
-            <a-form-item label="博客搬家">
-              <a-radio-group v-model="isMove">
-                <a-radio :value="1">是</a-radio>
-                <a-radio :value="0">否</a-radio>
-              </a-radio-group>
-            </a-form-item>
-          </a-col>
+          <!--          <a-col :lg="8" :md="12" :sm="24">-->
+          <!--            <a-form-item label="博客搬家">-->
+          <!--              <a-radio-group v-model="isMove">-->
+          <!--                <a-radio :value="1">是</a-radio>-->
+          <!--                <a-radio :value="0">否</a-radio>-->
+          <!--              </a-radio-group>-->
+          <!--            </a-form-item>-->
+          <!--          </a-col>-->
         </a-row>
         <a-row class="form-row" :gutter="16">
           <a-col :lg="8" :md="12" :sm="24">
