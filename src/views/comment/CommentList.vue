@@ -19,6 +19,9 @@
         <span slot="postTitle" slot-scope="text">
           <ellipsis :length="10" tooltip>{{ text }}</ellipsis>
         </span>
+        <span slot="parentUserName" slot-scope="text">
+         {{ text === undefined ? '无': text }}
+        </span>
 
         <!--   添加操作     -->
         <span slot="action" slot-scope="text, record">

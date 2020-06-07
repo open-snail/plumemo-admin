@@ -4,8 +4,8 @@
       <a-form layout="inline">
         <a-row :gutter="48">
           <a-col :md="8" :sm="24">
-            <a-form-item label="分类名称">
-              <a-input v-model="queryParam.name" placeholder="请输入分类名称"/>
+            <a-form-item label="搜索">
+              <a-input v-model="queryParam.keywords" placeholder="请输入评论内容/文章标题"/>
             </a-form-item>
           </a-col>
           <a-col :md="!advanced && 8 || 24" :sm="24">

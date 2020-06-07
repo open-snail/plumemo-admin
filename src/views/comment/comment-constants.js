@@ -14,12 +14,13 @@ const table = {
     {
       title: '回复对象',
       align: 'center',
-      dataIndex: 'parentUserName'
+      dataIndex: 'parentUserName',
+      scopedSlots: { customRender: 'parentUserName' }
     },
     {
       title: '文章标题',
       align: 'center',
-      dataIndex: 'postTitle',
+      dataIndex: 'title',
       scopedSlots: { customRender: 'postTitle' }
     },
     {
