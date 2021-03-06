@@ -1,0 +1,48 @@
+{
+  "name": "@po-plugins/easy-comment",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "main": "dist/easy-comment/index.umd.js",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": [
+    "./src/**/*.scss",
+    "./src/components/**/*.tsx"
+  ],
+  "scripts": {
+    "dev": "po dev --name easyComment --filename index --plugin --dest dist/easy-comment --proxy-api-target http://preview2.plumemo.com src/main.ts",
+    "dev:admin": "po dev --name easyCommentAdmin --filename index --plugin --dest dist/admin --port 5006 --proxy-api-target http://preview2.plumemo.com src/admin/main.ts",
+    "build:front": "po build --name easyComment --filename index --dest dist/easy-comment src/main.ts",
+    "build:widgets": "po build --dest dist/widgets src/widgets",
+    "build:admin": "po build --name easyCommentAdmin --filename index --dest dist/admin  src/admin/main.ts",
+    "build": "yarn build:front && yarn build:widgets && yarn build:admin",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@vue-async/utils": "^1.0.3",
+    "core-js": "^3.6.4",
+    "vue": "^2.6.9",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.1"
+  },
+  "devDependencies": {
+    "@plumemo/devtools": "^0.0.8",
+    "@vue-async/module-loader-typing": "^0.0.2",
+    "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-plugin-eslint": "^4.2.0",
+    "@vue/cli-plugin-typescript": "^4.5.6",
+    "@vue/cli-service": "^4.2.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^7.3.0",
+    "typescript": "^3.7.2",
+    "vue-template-compiler": "^2.6.9"
+  }
+}

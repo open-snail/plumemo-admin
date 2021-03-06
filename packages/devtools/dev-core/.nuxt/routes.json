@@ -1,0 +1,26 @@
+[
+  {
+    "name": "index",
+    "path": "/",
+    "component": "H:\\\\vue-po-blog\\\\core\\\\src\\\\views\\\\index.tsx",
+    "chunkName": "views/index",
+    "_name": "_3a46af13"
+  },
+  {
+    "path": "/error",
+    "name": "error",
+    "props": true,
+    "component": "H:\\\\vue-po-blog\\\\core\\\\src\\\\layouts\\\\error.tsx",
+    "_name": "_fddf8564"
+  },
+  {
+    "path": "*",
+    "props": {
+      "error": {
+        "statusCode": 404
+      }
+    },
+    "component": "H:\\\\vue-po-blog\\\\core\\\\src\\\\layouts\\\\error.tsx",
+    "_name": "_fddf8564"
+  }
+]

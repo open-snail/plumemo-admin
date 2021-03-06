@@ -1,0 +1,7 @@
+/.git
+/docs/.next
+/coverage
+/tmp
+build
+dist
+node_modules

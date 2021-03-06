@@ -1,68 +1,76 @@
 {
-  "name": "vue-antd-pro",
-  "version": "2.1.0",
+  "name": "vue-po-blog",
+  "version": "0.0.2",
+  "description": "前后端分离的轻量级Blog系统",
   "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint",
-    "build:preview": "vue-cli-service build --mode preview",
-    "lint:nofix": "vue-cli-service lint --no-fix",
-    "postinstall": "opencollective-postinstall"
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aceHubert/po-blog.git"
   },
-  "dependencies": {
-    "@antv/data-set": "^0.10.2",
-    "@antv/g2": "^3.5.11",
-    "ant-design-vue": "1.4.11",
-    "axios": "^0.19.0",
-    "core-js": "^3.1.2",
-    "enquire.js": "^2.1.6",
-    "lodash.get": "^4.4.2",
-    "lodash.pick": "^4.4.0",
-    "mavon-editor": "^2.7.7",
-    "mockjs2": "1.0.8",
-    "moment": "^2.24.0",
-    "nprogress": "^0.2.0",
-    "viser-vue": "^2.4.6",
-    "vue": "^2.6.10",
-    "vue-clipboard2": "^0.2.1",
-    "js-sha256": "^0.9.0",
-    "vue-cropper": "0.4.9",
-    "vue-ls": "^3.2.1",
-    "vue-quill-editor": "^3.0.6",
-    "vue-router": "^3.1.2",
-    "vue-svg-component-runtime": "^1.0.1",
-    "vuex": "^3.1.1",
-    "wangeditor": "^3.1.1"
+  "scripts": {
+    "build:es": "lerna run build:es --sort --parallel",
+    "build": "lerna run build --sort --stream --scope=@plumemo/*",
+    "clean": "lerna clean --yes",
+    "lint": "lerna run lint --parallel --stream",
+    "lint:fix": "lerna run lint:fix --parallel",
+    "prettier": "node ./scripts/prettier.js",
+    "prettier:all": "node ./scripts/prettier.js write",
+    "changelog": "node ./scripts/genChangelog.js",
+    "commit": "git-cz",
+    "prepublishOnly": "yarn install && yarn changelog && yarn build",
+    "release:alpha": "lerna publish --canary prepatch --preid alpha --dist-tag latest --force-publish",
+    "release": "lerna publish --no-git-reset"
   },
   "devDependencies": {
-    "@ant-design/colors": "^3.2.1",
-    "@babel/core": "^7.7.7",
-    "@vue/cli-plugin-babel": "^4.0.4",
-    "@vue/cli-plugin-eslint": "^4.0.4",
-    "@vue/cli-plugin-router": "^4.0.4",
-    "@vue/cli-plugin-unit-jest": "^4.0.4",
-    "@vue/cli-plugin-vuex": "^4.0.4",
-    "@vue/cli-service": "^4.0.4",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "@vue/test-utils": "^1.0.0-beta.29",
-    "babel-eslint": "^10.0.1",
-    "babel-plugin-import": "^1.12.2",
-    "babel-plugin-transform-remove-console": "^6.9.4",
-    "eslint": "^5.16.0",
-    "eslint-plugin-html": "^5.0.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "less": "^3.0.4",
-    "less-loader": "^5.0.0",
-    "opencollective": "^1.0.3",
-    "opencollective-postinstall": "^2.0.2",
-    "vue-svg-icon-loader": "^2.1.1",
-    "vue-template-compiler": "^2.6.10",
-    "webpack-theme-color-replacer": "^1.2.17"
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.7.4",
+    "@commitlint/cli": "^8.3.4",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "@typescript-eslint/eslint-plugin": "^2.12.0",
+    "@typescript-eslint/parser": "^2.12.0",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^24.9.0",
+    "child_process": "^1.0.2",
+    "commitizen": "^4.0.3",
+    "concurrently": "^5.1.0",
+    "core-js": "^3.6.5",
+    "cross-env": "^6.0.3",
+    "cz-lerna-changelog": "^2.0.3",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-jest": "^24.0.2",
+    "eslint-plugin-local": "^1.0.0",
+    "eslint-plugin-prettier": "^3.1.2",
+    "glob-gitignore": "^1.0.14",
+    "husky": ">=1",
+    "jest": "^24.9.0",
+    "lerna": "^3.22.1",
+    "lerna-changelog": "^1.0.1",
+    "lint-staged": ">=8",
+    "nodemon": "^2.0.4",
+    "prettier": "^2.0.5",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.2",
+    "util": "^0.12.1"
   },
-  "collective": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/ant-design-pro-vue"
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-lerna-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && yarn lerna run test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "workspaces": {
+    "packages": [
+      "packages/devtools",
+      "packages/themes/*",
+      "packages/plugins/*"
+    ]
   }
 }

@@ -1,0 +1,13 @@
+.article {
+  .content {
+    margin-bottom: 20px;
+    width: 100%;
+    overflow: hidden;
+    :global {
+      img,
+      video {
+        max-width: 100% !important;
+      }
+    }
+  }
+}

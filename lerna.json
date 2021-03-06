@@ -1,0 +1,25 @@
+{
+  "packages": ["packages/devtools"],
+  "npmClient": "yarn",
+  "useWorkspaces": true,
+  "command": {
+    "publish": {
+      "conventionalCommits": true,
+      "gitTagVersion": false,
+      "gitReset": true,
+      "allowBranch": ["master"],
+      "ignoreChanges": ["**/CHANGELOG.md", "**/node_modules/**", "**/package.json", "**/*.md", "**/test/**"],
+      "message": "chore(release): publish"
+    }
+  },
+  "version": "independent",
+  "changelog": {
+    "repo": "aceHubert/vue-po-blog",
+    "labels": {
+      "feat": ":rocket: New Feature",
+      "bug": ":bug: Bug Fix",
+      "breaking": ":boom: Breaking Change"
+    },
+    "cacheDir": ".changelog"
+  }
+}

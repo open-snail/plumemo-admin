@@ -1,0 +1,73 @@
+{
+  "name": "@po-themes/beautiful-theme",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "main": "dist/beautify-theme/index.umd.js",
+  "main:styles": [
+    "//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900",
+    "//cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css",
+    "dist/beautify-theme/index.css"
+  ],
+  "admin:main": {
+    "moduleName": "beautify-theme-admin",
+    "entry": "dist/admin/index.umd.js",
+    "styles": []
+  },
+  "widgets": {
+    "category": {
+      "entry": "dist/wedgets/category/index.umd.js",
+      "admin": "dist/wedgets/category/admin.umd.js"
+    },
+    "tag": "dist/wedgets/tag/tag.umd.js",
+    "my-info": "dist/wedgets/my-info/my-info.umd.js"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "sideEffects": [
+    "./src/**/*.scss",
+    "./src/components/**/*.tsx",
+    "./src/*.ts"
+  ],
+  "scripts": {
+    "dev": "po dev --name beautifyTheme --filename index --dest dist/beautify-theme --proxy-api-target http://localhost:8086 src/main.ts",
+    "dev:admin": "po dev --name beautifyThemeAdmin --filename index --dest dist/admin --port 5006 --admin --proxy-api-target https://preview.plumemo.com src/admin/main.ts",
+    "build:front": "po build --name beautifyTheme --filename index --dest dist/beautify-theme src/main.ts",
+    "build:widgets": "po build --dest dist/widgets src/widgets",
+    "build:admin": "po build --name beautifyThemeAdmin --filename index --dest dist/admin  src/admin/main.ts",
+    "build": "yarn build:front && yarn build:widgets && yarn build:admin",
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint"
+  },
+  "dependencies": {
+    "@vue-async/utils": "^1.0.6",
+    "core-js": "^3.6.4",
+    "marked": "^1.1.1",
+    "moment": "^2.28.0",
+    "vue": "^2.6.9",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.1",
+    "vuetify": "^2.3.10"
+  },
+  "devDependencies": {
+    "@plumemo/devtools": "^0.0.8",
+    "@types/marked": "^1.1.0",
+    "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-plugin-eslint": "^4.2.0",
+    "@vue/cli-plugin-typescript": "^4.5.6",
+    "@vue/cli-service": "^4.2.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^7.3.0",
+    "typescript": "^3.7.2",
+    "vue-router": "^3.4.3",
+    "vue-template-compiler": "^2.6.9",
+    "vue-tsx-support": "^2.3.3",
+    "vuex": "^3.6.0"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "restartable": "rs",
+  "ignore": [".git", ".svn", "node_modules"],
+  "verbose": true,
+  "watch": ["./src"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js jsx ts tsx vue json"
+}

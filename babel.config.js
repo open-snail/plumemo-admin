@@ -1,28 +1,27 @@
-const IS_PROD = ['production', 'prod'].includes(process.env.NODE_ENV)
+/**
+ * 根据使用导入:
+ * https://github.com/zloirock/core-js/blob/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-future.md
+ */
 
-const plugins = []
-if (IS_PROD) {
-  plugins.push('transform-remove-console')
-}
+module.exports = (api) => {
+  api.cache(true);
 
-// lazy load ant-design-vue
-// if your use import on Demand, Use this code
-plugins.push(['import', {
-  'libraryName': 'ant-design-vue',
-  'libraryDirectory': 'es',
-  'style': true // `style: true` 会加载 less 文件
-}])
-
-module.exports = {
-  presets: [
-    '@vue/cli-plugin-babel/preset',
-    [
-      '@babel/preset-env',
-      {
-        'useBuiltIns': 'entry',
-        'corejs': 3
-      }
-    ]
-  ],
-  plugins
-}
+  return {
+    presets: [
+      [
+        '@babel/preset-env',
+        {
+          modules: false, // 对ES6的模块文件不做转化，以便使用tree shaking、sideEffects等
+          spec: true,
+          forceAllTransforms: true,
+          useBuiltIns: 'usage', // 根据使用导入
+          corejs: {
+            version: 3, // 使用core-js@3
+            proposals: false,
+          },
+        },
+      ],
+    ],
+    babelrcRoots: ['.', 'packages/*'],
+  };
+};

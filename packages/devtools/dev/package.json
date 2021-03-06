@@ -1,0 +1,4 @@
+{
+  "name": "dev",
+  "main": "dist/dev.umd.js"
+}

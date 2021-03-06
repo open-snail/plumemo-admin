@@ -1,0 +1,62 @@
+{
+  "name": "@po/core",
+  "version": "0.0.1",
+  "description": "Po blog 前端核心系统",
+  "author": "Hubert<yi.xiang@live.cn>",
+  "private": true,
+  "typeings": "types/index.d.ts",
+  "files": [
+    "src",
+    "dist",
+    "types"
+  ],
+  "scripts": {
+    "serve": "cross-env PROXYAPI_URL=https://preview.plumemo.com nuxt",
+    "build": "cross-env BASE_URL=https://preview.plumemo.com nuxt build",
+    "build:devtools": "cross-env BASE_URL=/ nuxt build && node ./scripts/copyToDevtools.js",
+    "start": "nuxt start",
+    "generate": "cross-env BASE_URL=https://preview.plumemo.com nuxt generate",
+    "lint": "eslint . --cache --report-unused-disable-directives --ext .ts,.tsx --ignore-path=../../.eslintignore",
+    "lint:fix": "eslint . --cache --fix --ext .ts,.tsx --ignore-path=../../.eslintignore"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aceHubert/vue-po-blog.git",
+    "directory": "core"
+  },
+  "bugs": {
+    "url": "https://github.com/aceHubert/vue-plumemo-blog/issues"
+  },
+  "dependencies": {
+    "@vue-async/module-loader": "^1.0.9",
+    "axios": "^0.20.0",
+    "core-js": "^3.6.5",
+    "lodash.kebabcase": "^4.1.1",
+    "lodash.merge": "^4.6.2",
+    "nuxt": "^2.14.4",
+    "register-service-worker": "^1.7.1",
+    "vue-class-component": "^7.2.3",
+    "vue-i18n": "^8.21.0",
+    "vue-property-decorator": "^8.4.2",
+    "vuex-module-decorators": "^0.17.0"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.14.4",
+    "@nuxt/typescript-build": "^2.0.3",
+    "@nuxtjs/proxy": "^2.0.1",
+    "@types/lodash.kebabcase": "^4.1.6",
+    "@types/lodash.merge": "^4.6.6",
+    "@types/node": "^14.6.4",
+    "cross-env": "^7.0.2",
+    "sass": "^1.26.10",
+    "sass-loader": "^7.3.0",
+    "ts-loader": "^8.0.3",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.12"
+  },
+  "engines": {
+    "node": ">=8.9.0",
+    "yarn": "^1.0.0"
+  }
+}

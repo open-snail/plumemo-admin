@@ -1,0 +1,61 @@
+{
+  "name": "@plumemo/devtools",
+  "version": "0.0.8",
+  "author": "Hubert<yi.xiang@live.cn>",
+  "description": "Po blog 开发工具",
+  "main": "dist/cli.js",
+  "typings": "types/index.d.ts",
+  "keywords": [
+    "po blog",
+    "blog",
+    "async modules",
+    "devtools"
+  ],
+  "files": [
+    "dist",
+    "bin",
+    "dev-admin",
+    "dev-core",
+    "types"
+  ],
+  "bin": {
+    "po": "./bin/po-cli.js"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "dev": "yarn tsc && cd ./dev && node ./server.js",
+    "build": "yarn tsc"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:aceHubert/vue-po-blog.git",
+    "directory": "packages/devtools"
+  },
+  "bugs": {
+    "url": "https://github.com/aceHubert/vue-po-blog/issues"
+  },
+  "dependencies": {
+    "@nuxt/types": "^2.14.6",
+    "@nuxtjs/proxy": "^2.0.1",
+    "@vue-async/module-loader-typing": "^0.0.3",
+    "@vue/cli-service": "^4.5.6",
+    "axios": "^0.20.0",
+    "execa": "^4.0.3",
+    "express": "^4.17.1",
+    "lodash.camelcase": "^4.3.0",
+    "nuxt": "^2.14.6",
+    "vue-i18n": "^8.21.0",
+    "vue-property-decorator": "^8.4.2",
+    "vuex-module-decorators": "^0.17.0",
+    "yargs": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/lodash.camelcase": "^4.3.6",
+    "@types/node": "^14.11.2",
+    "typescript": "^4.0.3"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.0"
+  }
+}

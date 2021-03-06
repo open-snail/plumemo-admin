@@ -1,0 +1,356 @@
+[
+  {
+    "name": "404",
+    "path": "/404",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/404.vue",
+    "chunkName": "views/404",
+    "_name": "_809e7a42"
+  },
+  {
+    "path": "/articles",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/articles.vue",
+    "chunkName": "views/articles",
+    "children": [
+      {
+        "name": "articles",
+        "path": "",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/articles/index.vue",
+        "chunkName": "views/articles/index",
+        "meta": {
+          "title": "All Articles",
+          "keepAlive": true
+        },
+        "_name": "_826402ae"
+      },
+      {
+        "name": "articles-create",
+        "path": "create",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/articles/create.vue",
+        "chunkName": "views/articles/create",
+        "meta": {
+          "title": "New"
+        },
+        "_name": "_42a62135"
+      },
+      {
+        "name": "articles-edit",
+        "path": ":id",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/articles/_id.vue",
+        "chunkName": "views/articles/_id",
+        "meta": {
+          "title": "Edit"
+        },
+        "_name": "_5824d15e"
+      }
+    ],
+    "meta": {
+      "title": "Articles"
+    },
+    "_name": "_f21fe6b4"
+  },
+  {
+    "name": "categories",
+    "path": "/categories",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/categories/index.vue",
+    "chunkName": "views/categories/index",
+    "meta": {
+      "title": "Categories"
+    },
+    "_name": "_05f970f0"
+  },
+  {
+    "name": "dashboard",
+    "path": "/dashboard",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/dashboard/index.vue",
+    "chunkName": "views/dashboard/index",
+    "meta": {
+      "title": "Dashboard"
+    },
+    "_name": "_20d02d3e"
+  },
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/login.vue",
+    "chunkName": "views/login",
+    "_name": "_f82e3e60"
+  },
+  {
+    "path": "/medias",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/medias.vue",
+    "chunkName": "views/medias",
+    "children": [
+      {
+        "name": "medias",
+        "path": "",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/medias/index.vue",
+        "chunkName": "views/medias/index",
+        "meta": {
+          "title": "All Medias"
+        },
+        "_name": "_06b3e98a"
+      },
+      {
+        "name": "medias-create",
+        "path": "create",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/medias/create.vue",
+        "chunkName": "views/medias/create",
+        "meta": {
+          "title": "New"
+        },
+        "_name": "_8060b23a"
+      }
+    ],
+    "meta": {
+      "title": "Medias"
+    },
+    "_name": "_4ead2290"
+  },
+  {
+    "path": "/pages",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/pages.vue",
+    "chunkName": "views/pages",
+    "children": [
+      {
+        "name": "pages",
+        "path": "",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/pages/index.vue",
+        "chunkName": "views/pages/index",
+        "meta": {
+          "title": "All Pages",
+          "keepAlive": true
+        },
+        "_name": "_4f9b15ee"
+      },
+      {
+        "name": "pages-create",
+        "path": "create",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/pages/create.vue",
+        "chunkName": "views/pages/create",
+        "meta": {
+          "title": "New"
+        },
+        "_name": "_69081ae0"
+      },
+      {
+        "name": "page-edit",
+        "path": ":id",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/pages/_id.vue",
+        "chunkName": "views/pages/_id",
+        "meta": {
+          "title": "Edit"
+        },
+        "_name": "_b59c8854"
+      }
+    ],
+    "meta": {
+      "title": "Pages"
+    },
+    "_name": "_201d3bab"
+  },
+  {
+    "name": "plugins",
+    "path": "/plugins",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/plugins/index.vue",
+    "chunkName": "views/plugins/index",
+    "_name": "_42bdb30a"
+  },
+  {
+    "path": "/settings",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/settings.vue",
+    "chunkName": "views/settings",
+    "children": [
+      {
+        "name": "settings",
+        "path": "",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/settings/index.vue",
+        "chunkName": "views/settings/index",
+        "redirect": {
+          "name": "settings-general"
+        },
+        "_name": "_e70d7de2"
+      },
+      {
+        "name": "settings-general",
+        "path": "general",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/settings/general.vue",
+        "chunkName": "views/settings/general",
+        "meta": {
+          "title": "General Settings"
+        },
+        "_name": "_767010e5"
+      }
+    ],
+    "meta": {
+      "title": "Settings"
+    },
+    "_name": "_8582d8e8"
+  },
+  {
+    "name": "tags",
+    "path": "/tags",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/tags/index.vue",
+    "chunkName": "views/tags/index",
+    "meta": {
+      "title": "Tags"
+    },
+    "_name": "_74572e05"
+  },
+  {
+    "path": "/themes",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/themes.vue",
+    "chunkName": "views/themes",
+    "children": [
+      {
+        "name": "themes",
+        "path": "",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/themes/index.vue",
+        "chunkName": "views/themes/index",
+        "redirect": {
+          "name": "themes-libs"
+        },
+        "_name": "_20345794"
+      },
+      {
+        "name": "themes-color",
+        "path": "color",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/themes/color.vue",
+        "chunkName": "views/themes/color",
+        "meta": {
+          "title": "Theme Color"
+        },
+        "_name": "_d3cbab72"
+      },
+      {
+        "name": "themes-customize",
+        "path": "customize",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/themes/customize.vue",
+        "chunkName": "views/themes/customize",
+        "meta": {
+          "title": "Theme Customize"
+        },
+        "_name": "_7f425127"
+      },
+      {
+        "name": "themes-libs",
+        "path": "libs",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/themes/libs.vue",
+        "chunkName": "views/themes/libs",
+        "meta": {
+          "title": "Theme Libs"
+        },
+        "_name": "_c111624c"
+      },
+      {
+        "name": "themes-widgets",
+        "path": "widgets",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/themes/widgets.vue",
+        "chunkName": "views/themes/widgets",
+        "meta": {
+          "title": "Widgets"
+        },
+        "_name": "_46a92093"
+      }
+    ],
+    "meta": {
+      "title": "Themes"
+    },
+    "_name": "_f473601a"
+  },
+  {
+    "path": "/tools",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/tools.vue",
+    "chunkName": "views/tools",
+    "children": [
+      {
+        "name": "tools",
+        "path": "",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/tools/index.vue",
+        "chunkName": "views/tools/index",
+        "redirect": {
+          "name": "tools-import"
+        },
+        "_name": "_89c50176"
+      },
+      {
+        "name": "tools-export",
+        "path": "export",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/tools/export.vue",
+        "chunkName": "views/tools/export",
+        "meta": {
+          "title": "Export"
+        },
+        "_name": "_e9bbea5e"
+      },
+      {
+        "name": "tools-import",
+        "path": "import",
+        "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/tools/import.vue",
+        "chunkName": "views/tools/import",
+        "meta": {
+          "title": "Import"
+        },
+        "_name": "_0551eb7c"
+      }
+    ],
+    "meta": {
+      "title": "Tools"
+    },
+    "_name": "_5ab99b7c"
+  },
+  {
+    "name": "account-settings",
+    "path": "/account/settings",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/account/settings.vue",
+    "chunkName": "views/account/settings",
+    "meta": {
+      "title": "Site Settings"
+    },
+    "_name": "_22df0b2e"
+  },
+  {
+    "name": "account-user",
+    "path": "/account/user",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/account/user.vue",
+    "chunkName": "views/account/user",
+    "meta": {
+      "title": "User Info"
+    },
+    "_name": "_4d521856"
+  },
+  {
+    "name": "categories-create",
+    "path": "/categories/create",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/categories/create.vue",
+    "chunkName": "views/categories/create",
+    "_name": "_69cc1794"
+  },
+  {
+    "name": "plugins-installed",
+    "path": "/plugins/installed",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/plugins/installed.vue",
+    "chunkName": "views/plugins/installed",
+    "_name": "_2b0cddb2"
+  },
+  {
+    "name": "tags-create",
+    "path": "/tags/create",
+    "component": "/Users/hubertx/Desktop/Workspace/projects/vue-po-blog/admin/src/views/tags/create.vue",
+    "chunkName": "views/tags/create",
+    "_name": "_3e42dd59"
+  },
+  {
+    "path": "/",
+    "redirect": {
+      "name": "dashboard"
+    },
+    "_name": "_29172c1a"
+  },
+  {
+    "path": "*",
+    "redirect": {
+      "name": "404"
+    },
+    "_name": "_29172c1a"
+  }
+]
