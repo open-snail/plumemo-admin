@@ -220,9 +220,8 @@ export default {
                 console.log(err);
               });
           } else {
-            createParams['id'] = this.id;
             articleApi
-              .update(createParams)
+              .update(this.id, createParams)
               .then((response) => {
                 this.$notification.success({
                   message: response.message,

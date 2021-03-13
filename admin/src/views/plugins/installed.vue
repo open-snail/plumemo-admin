@@ -11,13 +11,14 @@
       :rowSelection="options.rowSelection"
       showPagination="auto"
     >
+      <span slot="status" slot-scope="text">{{ text === 'ENABLE' ? '启用' : '停用' }}</span>
       <span slot="desc" slot-scope="text">{{ text }} <a-divider type="vertical" /> <a>查看详情</a></span>
       <template slot="actions" slot-scope="text, record">
-        <a @click="start(record.pluginId)">启用</a>
-        <a-divider type="vertical" />
-        <a @click="stop(record.pluginId)">停用</a>
-        <a-divider type="vertical" />
-        <a @click="unload(record.pluginId)">卸载</a>
+        <a @click="start(record.pluginId)" v-if="record.status === 'DISABLE'">启用</a>
+        <a-divider type="vertical" v-if="record.status === 'DISABLE'"/>
+        <a @click="stop(record.pluginId)" v-if="record.status === 'ENABLE'">停用</a>
+        <a-divider type="vertical" v-if="record.status === 'ENABLE'"/>
+        <a @click="unload(record.pluginId)" v-if="record.status === 'DISABLE'">卸载</a>
       </template>
     </STable>
   </a-card>
@@ -36,6 +37,7 @@ const columns = [
     title: '状态',
     dataIndex: 'status',
     key: 'status',
+    scopedSlots: { customRender: 'status' },
   },
   {
     title: '作者',

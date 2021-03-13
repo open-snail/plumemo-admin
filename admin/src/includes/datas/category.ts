@@ -42,7 +42,7 @@ export const categoryApi: CategoryApi = {
    * @param id
    */
   get(id) {
-    return http.get(`admin/terms/detail/${id}`).then(({ model }) => model);
+    return http.get(`admin/categories/${id}`).then(({ model }) => model);
   },
 
   /**
@@ -58,7 +58,7 @@ export const categoryApi: CategoryApi = {
    * @param data
    */
   update(id, data) {
-    return http.put(`admin/terms/categories/${id}`, data).then(() => true);
+    return http.put(`admin/categories/${id}`, data).then(() => true);
   },
 
   /**
@@ -66,6 +66,6 @@ export const categoryApi: CategoryApi = {
    * @param id
    */
   delete(id) {
-    return http.delete(`admin/terms/categories/${id}`).then(() => true);
+    return http.delete(`admin/categories/${id}`).then(() => true);
   },
 };

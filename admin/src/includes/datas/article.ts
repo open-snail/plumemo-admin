@@ -94,7 +94,7 @@ export const articleApi: ArticleApi = {
    * @param data
    */
   update(id, data) {
-    return http.put(`admin/posts/${id}`, { id, ...data }).then(() => true);
+    return http.put(`admin/posts/${id}`, data).then(() => true);
   },
 
   /**
