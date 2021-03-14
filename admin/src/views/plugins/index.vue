@@ -32,6 +32,7 @@
                   </a-col>
                   <a-col :span="12" style="text-align: right">
                     <span>最后更新: {{ item.updateTime | timeFromNow }}</span>
+                    <p>版本: {{item.version}}</p>
                     <p>兼容当前版本</p>
                   </a-col>
                 </a-row>

@@ -3,7 +3,7 @@ import { http } from '../functions';
 import { PluginsApi, PluginsModel } from 'types/datas/plugin';
 
 function formatPlugin(plugin: any): PluginsModel {
-  const { description, title, pluginId, userName, updateTime, uid, avatar } = plugin;
+  const { description, title, pluginId, userName, updateTime, uid, avatar, download } = plugin;
   return Object.assign({
     description,
     title,
@@ -12,6 +12,8 @@ function formatPlugin(plugin: any): PluginsModel {
     updateTime,
     avatar,
     uid,
+    download,
+    version: plugin.pluginsVersion.version,
   });
 }
 

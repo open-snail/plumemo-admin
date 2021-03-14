@@ -7,6 +7,8 @@ export type PluginsModel = {
   userName: string;
   updateTime: string;
   uid: string;
+  download: number;
+  version: number
 };
 
 export type PluginsPagerResponse = PagerResponse<PluginsModel>;
