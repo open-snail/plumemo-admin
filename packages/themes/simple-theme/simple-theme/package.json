@@ -1,16 +1,16 @@
 {
-  "name": "@po-themes/beautiful-theme",
+  "name": "simple-theme",
   "version": "0.0.1",
   "description": "",
   "private": true,
-  "main": "dist/beautify-theme/index.umd.js",
+  "main": "dist/simple-theme/index.umd.js",
   "main:styles": [
     "//fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900",
     "//cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css",
-    "dist/beautify-theme/index.css"
+    "dist/simple-theme/index.css"
   ],
   "admin:main": {
-    "moduleName": "beautify-theme-admin",
+    "moduleName": "simple-theme-admin",
     "entry": "dist/admin/index.umd.js",
     "styles": []
   },
@@ -20,7 +20,10 @@
       "admin": "dist/wedgets/category/admin.umd.js"
     },
     "tag": "dist/wedgets/tag/tag.umd.js",
-    "my-info": "dist/wedgets/my-info/my-info.umd.js"
+    "my-info": "dist/wedgets/my-info/my-info.umd.js",
+    "links": "dist/wedgets/links/links.umd.js",
+    "recommend": "dist/wedgets/recommend/recommend.umd.js",
+    "ranking": "dist/wedgets/ranking/ranking.umd.js"
   },
   "license": "MIT",
   "files": [
@@ -33,11 +36,11 @@
     "./src/*.ts"
   ],
   "scripts": {
-    "dev": "po dev --name beautifyTheme --filename index --dest dist/beautify-theme --proxy-api-target https://preview.plumemo.com src/main.ts",
-    "dev:admin": "po dev --name beautifyThemeAdmin --filename index --dest dist/admin --port 5006 --admin --proxy-api-target https://preview.plumemo.com src/admin/main.ts",
-    "build:front": "po build --name beautifyTheme --filename index --dest dist/beautify-theme src/main.ts",
+    "dev": "po dev --name simpleTheme --filename index --dest dist/simple-theme --proxy-api-target https://preview.plumemo.com src/main.ts",
+    "dev:admin": "po dev --name simpleThemeAdmin --filename index --dest dist/admin --port 5006 --admin --proxy-api-target https://preview.plumemo.com src/admin/main.ts",
+    "build:front": "po build --name simpleTheme --filename index --dest dist/simple-theme src/main.ts",
     "build:widgets": "po build --dest dist/widgets src/widgets",
-    "build:admin": "po build --name beautifyThemeAdmin --filename index --dest dist/admin  src/admin/main.ts",
+    "build:admin": "po build --name simpleThemeAdmin --filename index --dest dist/admin  src/admin/main.ts",
     "build": "yarn build:front && yarn build:widgets && yarn build:admin",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"

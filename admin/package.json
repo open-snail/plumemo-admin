@@ -11,7 +11,7 @@
     "types"
   ],
   "scripts": {
-    "serve": "cross-env PROXYAPI_URL=http://localhost:8086 nuxt",
+    "serve": "cross-env PROXYAPI_URL=https://preview.plumemo.com nuxt",
     "build": "cross-env BASE_URL=https://preview.plumemo.com nuxt build",
     "build:devtools": "cross-env BASE_URL=/ nuxt build && node ./scripts/copyToDevtools.js",
     "start": "nuxt start",

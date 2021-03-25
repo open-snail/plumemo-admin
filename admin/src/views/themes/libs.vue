@@ -23,7 +23,7 @@
               <span>{{ item.updateAt | timeFromNow }}</span>
               <span v-if="item.status === 'ENABLE'"> 已启用 </span>
               <span v-else>
-                <a-popconfirm title="确认启用此主题吗?" @confirm="confirm(item)" okText="启用" cancelText="取消">
+                <a-popconfirm title="确认启用此主题吗?" @confirm="confirm(item.pluginId)" okText="启用" cancelText="取消">
                   启用
                 </a-popconfirm>
               </span>
@@ -82,7 +82,7 @@ export default {
         this.loading = false;
       });
     },
-    downloadPlugin(pluginId) {
+    confirm(pluginId) {
       this.loading = true;
       pluginApi.startPlugin(pluginId).then((res) => {
         const { success } = res;
