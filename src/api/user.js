@@ -57,14 +57,6 @@ export function logout () {
   })
 }
 
-export function getOauthLoginByGithub (params) {
-  return axios({
-    url: '/auth/github/v1/get',
-    method: 'get',
-    params
-  })
-}
-
 export function deleteUser (id) {
   return axios({
     url: `/auth/user/v1/${id}`,

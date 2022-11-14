@@ -36,8 +36,6 @@
           <template>
             <a @click="handleEdit(record)">编辑</a>
             <a-divider type="vertical" />
-            <a @click="handleSync(record)">同步</a>
-            <a-divider type="vertical" />
             <a v-if="record.status === 1" @click="handleModifyStatus(record,2)">发布</a>
             <a v-if="record.status === 2" @click="handleModifyStatus(record,1)">草稿箱</a>
             <a-divider type="vertical" />

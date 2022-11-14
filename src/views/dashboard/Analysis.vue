@@ -1,7 +1,7 @@
 <template>
   <div class="page-header-index-wide">
     <a-row :gutter="24">
-      <a-col :sm="24" :md="12" :xl="8" :style="{ marginBottom: '24px' }">
+      <a-col :sm="24" :md="12" :xl="12" :style="{ marginBottom: '24px' }">
         <chart-card :loading="loading" title="文章数量" :total="quantityObject.articleTotal" v-if="quantityObject !== null">
           <a-tooltip title="指标说明" slot="action">
             <a-icon type="info-circle-o" />
@@ -11,29 +11,12 @@
             <a-divider type="vertical" />
             <span>已发布 {{ quantityObject.publishTotal }}</span>
             <a-divider type="vertical" />
-            <span>已同步 {{ quantityObject.syncTotal }}</span>
+            <span>今日发布 {{ quantityObject.todayPublishTotal }}</span>
           </div>
-          <template slot="footer">今日发布<span> {{ quantityObject.todayPublishTotal }}</span></template>
+          <template slot="footer"></template>
         </chart-card>
       </a-col>
-      <a-col :sm="24" :md="12" :xl="8" :style="{ marginBottom: '24px' }">
-        <chart-card :loading="loading" title="同步文章效果" :total="countPerson.viewsTotal | NumberFormat" v-if="countPerson !== null">
-          <a-tooltip title="指标说明" slot="action">
-            <a-icon type="info-circle-o" />
-          </a-tooltip>
-          <div>
-            <mini-bar/>
-          </div>
-          <template slot="footer" >
-            文章 <span>{{ countPerson.articleTotal }}</span>
-            <a-divider type="vertical" />
-            点赞 <span>{{ countPerson.favorsTotal }}</span>
-            <a-divider type="vertical" />
-            评论 <span>{{ countPerson.commentsTotal }}</span>
-          </template>
-        </chart-card>
-      </a-col>
-      <a-col :sm="24" :md="12" :xl="8" :style="{ marginBottom: '24px' }">
+      <a-col :sm="24" :md="12" :xl="12" :style="{ marginBottom: '24px' }">
         <chart-card :loading="loading" title="系统信息" :total="memoryInfo.usedRatio+ '%'" v-if="systemInfo !== null && memoryInfo !== null">
           <a-tooltip title="指标说明" slot="action">
             <a-icon type="info-circle-o" />
@@ -107,10 +90,9 @@
 <script>
 import { ChartCard, MiniArea, MiniBar, MiniProgress, RankList, Bar, Trend, NumberInfo, MiniSmoothArea, Ellipsis } from '@/components'
 import { mixinDevice } from '@/utils/mixin'
-import { fetchBolgQuantityTotal, getPostsRanking, getCountPerson, getViewsChart } from '@/api/dashboard'
+import { fetchBolgQuantityTotal, getPostsRanking } from '@/api/dashboard'
 import { getSystem, getMemory } from '@/api/monitor'
 import ViewChart from './ViewChart'
-import moment from 'moment'
 
 const rankingTableColumns = [
   {
@@ -154,8 +136,6 @@ export default {
 
       rankingTableColumns,
       rankingData: null,
-      countPerson: null,
-      viewsChart: null,
       pieStyle: {
         stroke: '#fff',
         lineWidth: 1
@@ -172,8 +152,6 @@ export default {
     this.getSystem()
     this.getMemory()
     this.getPostsRanking()
-    this.getCountPerson()
-    this.getViewsChart()
     setTimeout(() => {
       this.loading = !this.loading
     }, 1000)
@@ -192,23 +170,6 @@ export default {
     getMemory () {
       getMemory().then(response => {
         this.memoryInfo = response.model
-      })
-    },
-    getCountPerson () {
-      getCountPerson().then(response => {
-        this.countPerson = response.model
-      })
-    },
-    getViewsChart () {
-      getViewsChart().then(response => {
-        const data = []
-        response.models.forEach(res => {
-          data.push({
-            x: moment(res.createTime).format('YYYY-MM-DD'),
-            y: res.viewsTotal
-          })
-        })
-        this.viewsChart = data
       })
     },
     getPostsRanking (type = 'day', startTime, endTime) {

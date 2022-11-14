@@ -7,15 +7,15 @@
       :form="form"
       @submit="handleSubmit"
     >
-      <a-alert v-if="isLoginError" type="error" showIcon style="margin-bottom: 24px;" message="邮箱或密码错误" />
+      <a-alert v-if="isLoginError" type="error" showIcon style="margin-bottom: 24px;" message="用户名或密码错误" />
       <a-form-item>
         <a-input
           size="large"
           type="text"
-          placeholder="请输入邮箱地址"
+          placeholder="请输入用户名"
           v-decorator="[
-            'email',
-            {rules: [{ required: true, message: '邮箱地址' }, { validator: handleUsernameOrEmail }], validateTrigger: 'change'}
+            'username',
+            {rules: [{ required: true, message: '用户名' }], validateTrigger: 'change'}
           ]"
         >
           <a-icon slot="prefix" type="user" :style="{ color: 'rgba(0,0,0,.25)' }"/>
@@ -49,7 +49,7 @@
       </a-form-item>
 
       <div class="user-login-other">
-        <router-link class="register" :to="{ name: 'register' }">注册账户</router-link>
+        <router-link class="register" :to="{ name: 'register' }">注册管理员账户</router-link>
       </div>
     </a-form>
   </div>
@@ -92,7 +92,7 @@ export default {
         state.loginType = 0
         callback()
       } else {
-        callback(new Error('邮箱格式错误'))
+        callback(new Error('用户名格式错误'))
       }
     },
     handleSubmit (e) {
@@ -104,7 +104,7 @@ export default {
       } = this
 
       state.loginBtn = true
-      const validateFieldsKey = ['email', 'password']
+      const validateFieldsKey = ['username', 'password']
       validateFields(validateFieldsKey, { force: true }, (err, values) => {
         if (!err) {
           console.log('login form', values)

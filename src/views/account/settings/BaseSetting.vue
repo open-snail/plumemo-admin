@@ -9,7 +9,7 @@
           >
             <a-input
               placeholder="给自己起个名字"
-              v-decorator="['name', { rules: [{ required: true, message: '昵称不能为空', whitespace: true }] }]"/>
+              v-decorator="['nickname', { rules: [{ required: true, message: '昵称不能为空', whitespace: true }] }]"/>
           </a-form-item>
           <a-form-item
             label="个人简介"

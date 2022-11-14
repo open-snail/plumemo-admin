@@ -31,12 +31,6 @@ const table = {
       scopedSlots: { customRender: 'status' }
     },
     {
-      title: '同步状态',
-      dataIndex: 'syncStatus',
-      align: 'center',
-      scopedSlots: { customRender: 'syncStatus' }
-    },
-    {
       title: '浏览数',
       align: 'center',
       dataIndex: 'views'

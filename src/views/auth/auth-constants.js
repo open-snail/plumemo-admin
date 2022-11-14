@@ -9,7 +9,7 @@ const table = {
     {
       title: '用户名',
       align: 'center',
-      dataIndex: 'name'
+      dataIndex: 'nickname'
     },
     {
       title: '角色',

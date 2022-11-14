@@ -5,7 +5,7 @@
         <a-row :gutter="48">
           <a-col :md="8" :sm="24">
             <a-form-item label="用户名称">
-              <a-input v-model="queryParam.name" placeholder="请输入用户名称"/>
+              <a-input v-model="queryParam.nickname" placeholder="请输入用户名称"/>
             </a-form-item>
           </a-col>
           <a-col :md="8" :sm="24">

@@ -6,8 +6,8 @@
         <a-input
           size="large"
           type="text"
-          placeholder="邮箱"
-          v-decorator="['email', {rules: [{ required: true, type: 'email', message: '请输入邮箱地址' }], validateTrigger: ['change', 'blur']}]"
+          placeholder="用户名"
+          v-decorator="['username', {rules: [{ required: true, message: '请输入用户名' }], validateTrigger: ['change', 'blur']}]"
         ></a-input>
       </a-form-item>
 
@@ -46,23 +46,6 @@
           v-decorator="['password2', {rules: [{ required: true, message: '至少6位密码，区分大小写' }, { validator: this.handlePasswordCheck }], validateTrigger: ['change', 'blur']}]"
         ></a-input>
       </a-form-item>
-      <a-row :gutter="16">
-        <a-col class="gutter-row" :span="16">
-          <a-form-item>
-            <a-input size="large" type="text" placeholder="验证码" v-decorator="['verifyCode', {rules: [{ required: true, message: '请输入验证码' }], validateTrigger: 'blur'}]">
-              <a-icon slot="prefix" type="mail" :style="{ color: 'rgba(0,0,0,.25)' }"/>
-            </a-input>
-          </a-form-item>
-        </a-col>
-        <a-col class="gutter-row" :span="8">
-          <a-button
-            class="getCaptcha"
-            size="large"
-            :disabled="state.smsSendBtn"
-            @click.stop.prevent="getCaptcha"
-            v-text="!state.smsSendBtn && '获取验证码'||(state.time+' s')"></a-button>
-        </a-col>
-      </a-row>
 
       <a-form-item>
         <a-button
@@ -83,7 +66,8 @@
 
 <script>
 import { mixinDevice } from '@/utils/mixin.js'
-import { getSmsCaptcha, register } from '@/api/login'
+import { register } from '@/api/login'
+import { sha256 } from 'js-sha256'
 
 const levelNames = {
   0: '低',
@@ -186,11 +170,15 @@ export default {
     },
 
     handleSubmit () {
+      console.log('handleSubmit')
       const { form: { validateFields }, state, $router } = this
       validateFields({ force: true }, (err, values) => {
         if (!err) {
           state.passwordLevelChecked = false
           const registerParams = { ...values }
+
+          const sha256 = require('js-sha256').sha256
+          registerParams.password = sha256(values.password)
 
           register(registerParams).then(res => {
             const { success } = res
@@ -204,37 +192,12 @@ export default {
 
     getCaptcha (e) {
       e.preventDefault()
-      const { form: { validateFields }, state, $message, $notification } = this
+      const { form: { validateFields } } = this
 
-      validateFields(['email'], { force: true },
+      validateFields(['username'], { force: true },
         (err, values) => {
           if (!err) {
-            state.smsSendBtn = true
-
-            const interval = window.setInterval(() => {
-              if (state.time-- <= 0) {
-                state.time = 60
-                state.smsSendBtn = false
-                window.clearInterval(interval)
-              }
-            }, 1000)
-
-            const hide = $message.loading('验证码发送中..', 0)
-
-            getSmsCaptcha({ email: values.email }).then(res => {
-              setTimeout(hide, 2500)
-              $notification['success']({
-                message: '提示',
-                description: '验证码获取成功，请查收您的邮件',
-                duration: 8
-              })
-            }).catch(err => {
-              setTimeout(hide, 1)
-              clearInterval(interval)
-              state.time = 60
-              state.smsSendBtn = false
-              this.requestFailed(err)
-            })
+            console.log('1111')
           }
         }
       )
